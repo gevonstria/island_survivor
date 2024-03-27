@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://utcl1x1kr6r"]
+
+[ext_resource type="PackedScene" uid="uid://cngs43m42uks4" path="res://items/interactables/pickable_template.tscn" id="1_hutr5"]
+[ext_resource type="PackedScene" uid="uid://dyy482p8hlrxs" path="res://meshes/stone.tscn" id="2_bjsmd"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hyxy5"]
+radius = 0.109895
+height = 0.304733
+
+[node name="PickableStone" instance=ExtResource("1_hutr5")]
+
+[node name="Pickable" parent="." index="0"]
+item_key = 1
+prompt = "Pick Up Stone"
+
+[node name="CollisionShape3D" parent="Pickable" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_hyxy5")
+
+[node name="Stone" parent="Pickable" index="1" instance=ExtResource("2_bjsmd")]
