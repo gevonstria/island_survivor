@@ -7,7 +7,7 @@
 radius = 0.109895
 height = 0.550121
 
-[node name="PickableStick" instance=ExtResource("1_opyld")]
+[node name="PickablePlant" instance=ExtResource("1_opyld")]
 
 [node name="Pickable" parent="." index="0"]
 item_key = 2

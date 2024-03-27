@@ -6,5 +6,4 @@ class_name Pickable
 @onready var parent = get_parent()
 
 func start_interaction():
-	print(parent)
 	parent.queue_free()
