@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://ppn1n247flea"]
+
+[ext_resource type="PackedScene" uid="uid://cqv1te5gsmcqu" path="res://meshes/terrain.tscn" id="1_n8ujt"]
+[ext_resource type="PackedScene" uid="uid://cqo36ffues6de" path="res://meshes/tree.tscn" id="2_c1sr5"]
+[ext_resource type="PackedScene" uid="uid://byilx5u8nm1jg" path="res://meshes/mushroom.tscn" id="3_x4jlk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wyr1k"]
+transparency = 1
+albedo_color = Color(0.180392, 1, 1, 0.745098)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_r7wk7"]
+material = SubResource("StandardMaterial3D_wyr1k")
+size = Vector2(2000, 2000)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o81ny"]
+sky_top_color = Color(0.32549, 0.878431, 1, 1)
+sky_horizon_color = Color(0.670588, 0.784314, 0.831373, 1)
+ground_horizon_color = Color(0.670588, 0.784314, 0.831373, 1)
+
+[sub_resource type="Sky" id="Sky_0iwnu"]
+sky_material = SubResource("ProceduralSkyMaterial_o81ny")
+
+[sub_resource type="Environment" id="Environment_f1l5a"]
+background_mode = 2
+sky = SubResource("Sky_0iwnu")
+ambient_light_color = Color(0.32549, 0.878431, 1, 1)
+ambient_light_sky_contribution = 0.5
+
+[node name="MainGame" type="Node"]
+
+[node name="StageController" type="Node" parent="."]
+
+[node name="Island" type="Node" parent="StageController"]
+
+[node name="Terrain" parent="StageController/Island" instance=ExtResource("1_n8ujt")]
+
+[node name="Water" type="MeshInstance3D" parent="StageController/Island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.06473, 0)
+mesh = SubResource("PlaneMesh_r7wk7")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="StageController/Island"]
+transform = Transform3D(1, 0, 0, 0, 0.645551, 0.763717, 0, -0.763717, 0.645551, -1.93687, 6.20364, 0)
+light_color = Color(0.996078, 1, 0.729412, 1)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="StageController/Island"]
+environment = SubResource("Environment_f1l5a")
+
+[node name="Tree" parent="." instance=ExtResource("2_c1sr5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.7852, -0.0312991, 20.6178)
+
+[node name="Tree2" parent="." instance=ExtResource("2_c1sr5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.7852, -0.0686083, 6.86535)
+
+[node name="Tree3" parent="." instance=ExtResource("2_c1sr5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.4093, 0.0335083, 6.86535)
+
+[node name="Mushroom" parent="." instance=ExtResource("3_x4jlk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.4003, 0, 8.52038)
+
+[node name="Mushroom2" parent="." instance=ExtResource("3_x4jlk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.2992, -2.38419e-07, 19.0956)
+
+[node name="Mushroom3" parent="." instance=ExtResource("3_x4jlk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.7297, 0, 10.6522)
