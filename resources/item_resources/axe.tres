@@ -9,3 +9,4 @@ item_key = 10
 display_name = "Axe"
 icon = ExtResource("1_jyh2c")
 description = "A crude axe made with sticks and stones."
+is_equippable = true

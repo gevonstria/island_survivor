@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://vtrh0npepa4h"]
+[gd_scene load_steps=4 format=3 uid="uid://vtrh0npepa4h"]
 
 [ext_resource type="Texture2D" uid="uid://cbls513iyjkl8" path="res://textures/circle32.png" id="1_1i8qj"]
+[ext_resource type="Script" path="res://ui/hud/hotbar_ui.gd" id="2_ac72j"]
+[ext_resource type="PackedScene" uid="uid://d06jvug8bh84v" path="res://ui/custom_nodes/hot_bar_slot.tscn" id="2_uf8hd"]
 
 [node name="Hud" type="Control"]
 layout_mode = 3
@@ -26,3 +28,49 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_1i8qj")
 expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="HotBarSlotContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 16
+alignment = 1
+script = ExtResource("2_ac72j")
+
+[node name="HotBarSlot" parent="MarginContainer/HotBarSlotContainer" instance=ExtResource("2_uf8hd")]
+layout_mode = 2
+
+[node name="HotBarSlot2" parent="MarginContainer/HotBarSlotContainer" instance=ExtResource("2_uf8hd")]
+layout_mode = 2
+
+[node name="HotBarSlot3" parent="MarginContainer/HotBarSlotContainer" instance=ExtResource("2_uf8hd")]
+layout_mode = 2
+
+[node name="HotBarSlot4" parent="MarginContainer/HotBarSlotContainer" instance=ExtResource("2_uf8hd")]
+layout_mode = 2
+
+[node name="HotBarSlot5" parent="MarginContainer/HotBarSlotContainer" instance=ExtResource("2_uf8hd")]
+layout_mode = 2
+
+[node name="HotBarSlot6" parent="MarginContainer/HotBarSlotContainer" instance=ExtResource("2_uf8hd")]
+layout_mode = 2
+
+[node name="HotBarSlot7" parent="MarginContainer/HotBarSlotContainer" instance=ExtResource("2_uf8hd")]
+layout_mode = 2
+
+[node name="HotBarSlot8" parent="MarginContainer/HotBarSlotContainer" instance=ExtResource("2_uf8hd")]
+layout_mode = 2
+
+[node name="HotBarSlot9" parent="MarginContainer/HotBarSlotContainer" instance=ExtResource("2_uf8hd")]
+layout_mode = 2

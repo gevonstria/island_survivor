@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://d06jvug8bh84v"]
+
+[ext_resource type="PackedScene" uid="uid://bihchgc53k323" path="res://ui/custom_nodes/inventory_slot.tscn" id="1_sxii6"]
+[ext_resource type="Texture2D" uid="uid://bikbsmhn3qe27" path="res://textures/panel_blue.png" id="2_dhqjp"]
+[ext_resource type="Script" path="res://ui/custom_nodes/hot_bar_slot.gd" id="3_md7sy"]
+[ext_resource type="Texture2D" uid="uid://kdaxobu0yfhw" path="res://textures/panelInset_brown.png" id="4_ip8ur"]
+
+[node name="HotBarSlot" groups=["HotBarSlot"] instance=ExtResource("1_sxii6")]
+texture = ExtResource("2_dhqjp")
+script = ExtResource("3_md7sy")
+
+[node name="NumTextureRect" type="TextureRect" parent="." index="1"]
+custom_minimum_size = Vector2(2, 2)
+layout_mode = 0
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 16.0
+offset_bottom = 16.0
+texture = ExtResource("4_ip8ur")
+expand_mode = 1
+
+[node name="NumLabel" type="Label" parent="NumTextureRect" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1

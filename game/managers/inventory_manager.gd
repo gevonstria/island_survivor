@@ -1,8 +1,10 @@
 extends Node
 
 const INVENTORY_SIZE = 28
+const HOTBAR_SIZE = 9
 
 var inventory = []
+var hotbar = []
 
 func _enter_tree() -> void:
 	EventSystem.INV_try_to_pickup_item.connect(try_to_pickup_item)
@@ -14,6 +16,10 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	# init array size to inventory size
 	inventory.resize(INVENTORY_SIZE)
+	hotbar.resize(HOTBAR_SIZE)
+	
+	# add temp items
+	inventory[0] = ItemConfig.Keys.Axe
 	
 func try_to_pickup_item(item_key, destroy_pickable):
 	if not get_free_slots():
@@ -24,12 +30,26 @@ func try_to_pickup_item(item_key, destroy_pickable):
 
 func send_inventory():
 	EventSystem.INV_inventory_updated.emit(inventory)
+	
+func send_hotbar():
+	EventSystem.INV_hotbar_updated.emit(hotbar)
 
-func switch_to_item_indexes(a, b):
-	var item_key1 = inventory[a]
-	inventory[a] = inventory[b]
-	inventory[b] = item_key1
+func switch_to_item_indexes(a, idx_a_in_hotbar, b, idx_b_in_hotbar):
+	var item1 = inventory[a] if not idx_a_in_hotbar else hotbar[a]
+	var item2 = inventory[b] if not idx_b_in_hotbar else hotbar[b]
+	
+	if not idx_a_in_hotbar:
+		inventory[a] = item2
+	else:
+		hotbar[a] = item2
+		
+	if not idx_b_in_hotbar:
+		inventory[b] = item1
+	else:
+		hotbar[b] = item1
+		
 	send_inventory()
+	send_hotbar()
 	
 func get_free_slots():
 	return inventory.count(null)
