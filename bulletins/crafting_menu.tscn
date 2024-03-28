@@ -1,5 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://b11n2dchgblcp"]
+[gd_scene load_steps=4 format=3 uid="uid://b11n2dchgblcp"]
 
 [ext_resource type="PackedScene" uid="uid://bj5sqvpo82wss" path="res://bulletins/player_menus.tscn" id="1_4cn08"]
+[ext_resource type="Script" path="res://bulletins/crafting_menu.gd" id="2_it6kp"]
+[ext_resource type="PackedScene" uid="uid://debh3skwsmdyy" path="res://ui/custom_nodes/crafting_button.tscn" id="3_pj4bh"]
 
 [node name="CraftingMenu" instance=ExtResource("1_4cn08")]
+script = ExtResource("2_it6kp")
+crafting_button_scene = ExtResource("3_pj4bh")
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/UtilityNinePatchRect/MarginContainer/VBoxContainer" index="1"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CraftingButtonGridContainer" type="GridContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/UtilityNinePatchRect/MarginContainer/VBoxContainer/CenterContainer" index="0"]
+layout_mode = 2
+columns = 3

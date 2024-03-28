@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CraftingBlueprintResource" load_steps=4 format=3 uid="uid://027m6g3lf7vo"]
+
+[ext_resource type="Script" path="res://resources/crafting_blueprint_resources/crafting_blueprint_resource.gd" id="1_p46xi"]
+[ext_resource type="Script" path="res://resources/crafting_blueprint_resources/bluepint_cost_data.gd" id="1_p58ur"]
+
+[sub_resource type="Resource" id="Resource_rpsph"]
+script = ExtResource("1_p58ur")
+item_key = 2
+amount = 2
+
+[resource]
+script = ExtResource("1_p46xi")
+item_key = 14
+cost = Array[ExtResource("1_p58ur")]([SubResource("Resource_rpsph")])
