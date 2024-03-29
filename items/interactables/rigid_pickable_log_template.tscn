@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://bv2yik7yxk2no"]
+
+[ext_resource type="PackedScene" uid="uid://baohpgbfamhju" path="res://items/interactables/rigid_pickable_template.tscn" id="1_puyfx"]
+[ext_resource type="PackedScene" uid="uid://brp26l0whpuxd" path="res://meshes/log.tscn" id="2_12ggt"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_i5vjk"]
+height = 1.06919
+radius = 0.152695
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_o0k4d"]
+points = PackedVector3Array(0.0186936, -0.331638, 0.145389, 0.114176, 0.511555, 0.0658504, -0.108533, 0.511555, 0.0817412, -0.124455, -0.506655, -0.0772793, 0.130098, -0.506655, 0.0181218, 0.0186936, 0.511555, -0.140927, -0.124455, -0.506655, 0.0817412, -0.108533, 0.511555, -0.0772793, 0.114176, -0.363432, -0.0772793, 0.114176, 0.511555, -0.0772793, 0.0186936, -0.506655, -0.125008, -0.0130756, 0.511555, 0.12947, 0.114176, -0.506655, 0.0976601, -0.0130756, -0.506655, 0.145389, -0.0130756, 0.511555, -0.140927, 0.0186936, 0.511555, 0.12947, -0.0289976, -0.506655, -0.125008, 0.130098, -0.331638, 0.0817412, 0.0982786, -0.506655, -0.0772793, 0.0505126, 0.304644, -0.125008, 0.0346405, -0.474761, 0.145389, -0.124455, -0.379379, 0.0817412, 0.0982786, 0.511555, 0.0817412, -0.0926357, 0.511555, -0.0931982, -0.0130756, -0.379379, 0.145389, 0.0982786, 0.511555, -0.0931982, -0.0448947, 0.495608, -0.125008, -0.0448947, -0.442967, 0.12947, 0.114176, -0.442967, 0.0976601, 0.130098, -0.506655, 0.0817412, 0.0505126, -0.506655, -0.109089, 0.130098, -0.347385, 0.0499315)
+
+[node name="RigidPickableLogTemplate" instance=ExtResource("1_puyfx")]
+collision_layer = 16
+
+[node name="Pickable" parent="." index="0"]
+item_key = 5
+prompt = "Pick Up Log"
+
+[node name="CollisionShape3D" parent="Pickable" index="0"]
+shape = SubResource("CylinderShape3D_i5vjk")
+
+[node name="Log" parent="." index="1" instance=ExtResource("2_12ggt")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2"]
+shape = SubResource("ConvexPolygonShape3D_o0k4d")

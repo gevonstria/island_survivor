@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c70hko3agb05a"]
+
+[ext_resource type="Script" path="res://objects/hittable_objects/hittable_object.gd" id="1_buxmj"]
+[ext_resource type="PackedScene" uid="uid://ciy4puab10q47" path="res://objects/hitbox/hit_box.tscn" id="2_o84ka"]
+
+[node name="HittableObjectTemplate" type="Node3D"]
+script = ExtResource("1_buxmj")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 64
+
+[node name="ItemSpawnPoints" type="Node3D" parent="."]
+
+[node name="HitBox" parent="." instance=ExtResource("2_o84ka")]
+
+[connection signal="register_hit" from="HitBox" to="." method="register_hit"]

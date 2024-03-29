@@ -54,3 +54,17 @@ const CraftingBlueprintResource_PATHS = {
 
 static func get_crafting_blueprint_resource(key):
 	return load(CraftingBlueprintResource_PATHS.get(key))
+	
+const EQUIPPABLE_ITEM_PATHS = {
+	Keys.Axe: "res://items/equippables/equippable_axe_template.tscn"
+}
+
+static func get_equippable_item_resource(key):
+	return load(EQUIPPABLE_ITEM_PATHS.get(key))
+	
+const PICKABLE_ITEM_PATHS = {
+	Keys.Log: "res://items/interactables/rigid_pickable_log_template.tscn"
+}
+
+static func get_pickable_item_resource(key):
+	return load(PICKABLE_ITEM_PATHS.get(key))

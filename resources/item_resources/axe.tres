@@ -1,12 +1,14 @@
-[gd_resource type="Resource" script_class="ItemResource" load_steps=3 format=3 uid="uid://r60rfillacje"]
+[gd_resource type="Resource" script_class="WeaponItemResource" load_steps=3 format=3 uid="uid://dqjxomwvub0qm"]
 
-[ext_resource type="Texture2D" uid="uid://c3haqyl0vcuqw" path="res://textures/item_icons/axe.png" id="1_jyh2c"]
-[ext_resource type="Script" path="res://resources/item_resources/item_resource.gd" id="2_61wnw"]
+[ext_resource type="Texture2D" uid="uid://c3haqyl0vcuqw" path="res://textures/item_icons/axe.png" id="1_77jbj"]
+[ext_resource type="Script" path="res://resources/item_resources/weapon_item_resource.gd" id="1_ru5f8"]
 
 [resource]
-script = ExtResource("2_61wnw")
+script = ExtResource("1_ru5f8")
+damage = 20.0
+range = 1.5
 item_key = 10
 display_name = "Axe"
-icon = ExtResource("1_jyh2c")
-description = "A crude axe made with sticks and stones."
+icon = ExtResource("1_77jbj")
+description = "A crude axe."
 is_equippable = true

@@ -21,7 +21,7 @@ func _ready() -> void:
 		hotbar_slot.mouse_entered.connect(show_item_info.bind(hotbar_slot))
 		hotbar_slot.mouse_exited.connect(hide_item_info)
 		
-func update_inventory(inventory):
+func update_inventory(inventory): 
 	for i in inventory.size():
 		inventory_container.get_child(i).set_item_key(inventory[i])
 
