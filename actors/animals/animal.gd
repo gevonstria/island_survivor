@@ -52,7 +52,7 @@ func _ready() -> void:
 	animation_player.animation_finished.connect(animation_finished)
 	vision_area_collision_shape_3d.shape.radius = vision_range
 	
-func animation_finished(anim_name):
+func animation_finished(_anim_name):
 	if state == States.Idle:
 		animation_player.play(idle_animations.pick_random(), ANIM_BLEND)
 	elif state == States.Hurt:

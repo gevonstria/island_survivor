@@ -11,6 +11,7 @@ signal INV_switch_to_item_indexes
 signal INV_add_item
 signal INV_delete_crafting_blueprint_cost
 signal INV_delete_item_by_index
+signal INV_add_item_by_index
 
 signal PLA_freeze_player
 signal PLA_unfreeze_player

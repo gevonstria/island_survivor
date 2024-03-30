@@ -49,7 +49,8 @@ const ITEM_RESOURCE_PATHS = {
 	Keys.FlintStone: "res://resources/item_resources/flint_stone_resource.tres",
 	Keys.RawMeat: "res://resources/item_resources/raw_meat_item_resource.tres",
 	Keys.Tent: "res://resources/item_resources/tent_resource.tres",
-	Keys.Campfire: "res://resources/item_resources/campfire_resource.tres"
+	Keys.Campfire: "res://resources/item_resources/campfire_resource.tres",
+	Keys.CookedMeat: "res://resources/item_resources/cooked_meat.tres"
 }
 
 static func get_item_resource(key):
@@ -69,7 +70,9 @@ const EQUIPPABLE_ITEM_PATHS = {
 	Keys.PickAxe: "res://items/equippables/equippable_pickaxe_template.tscn",
 	Keys.Mushroom: "res://items/equippables/equippable_mushroom_template.tscn",
 	Keys.Tent: "res://items/equippables/equippable_tent_template.tscn",
-	Keys.Campfire: "res://items/equippables/equippable_campfire_template.tscn"
+	Keys.Campfire: "res://items/equippables/equippable_campfire_template.tscn",
+	Keys.CookedMeat: "res://items/equippables/equippable_cooked_meat_template.tscn"
+	
 }
 
 static func get_equippable_item_resource(key):

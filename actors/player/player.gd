@@ -27,7 +27,7 @@ func set_freeze(freeze):
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	interaction_ray_cast.check_interaction()
 	
 func _physics_process(delta: float) -> void:

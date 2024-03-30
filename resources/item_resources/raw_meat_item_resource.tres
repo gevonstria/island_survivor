@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="ItemResource" load_steps=3 format=3 uid="uid://b24jdn7qd18bk"]
+[gd_resource type="Resource" script_class="ItemResource" load_steps=4 format=3 uid="uid://b24jdn7qd18bk"]
 
+[ext_resource type="Resource" uid="uid://drfmvnafrfy3" path="res://resources/cooking_recipes/meat_recipe.tres" id="1_2vrlr"]
 [ext_resource type="Texture2D" uid="uid://bgbac0a0j057h" path="res://textures/item_icons/raw_meat.png" id="1_sx0p2"]
 [ext_resource type="Script" path="res://resources/item_resources/item_resource.gd" id="2_r63yw"]
 
@@ -10,3 +11,4 @@ display_name = "Raw Meat"
 icon = ExtResource("1_sx0p2")
 description = "Raw Meat from an animal."
 is_equippable = false
+cooking_recipe = ExtResource("1_2vrlr")

@@ -1,0 +1,80 @@
+[gd_scene load_steps=10 format=3 uid="uid://bpuuy4yd4qkjq"]
+
+[ext_resource type="Script" path="res://items/interactables/interactable_cooker.gd" id="1_2i5u4"]
+[ext_resource type="Texture2D" uid="uid://cbls513iyjkl8" path="res://textures/circle32.png" id="2_13m6x"]
+
+[sub_resource type="Gradient" id="Gradient_k0kty"]
+offsets = PackedFloat32Array(0, 0.567251, 1)
+colors = PackedColorArray(0.827451, 0.619608, 0, 0.666667, 0.882353, 0.0705882, 0, 1, 0.835294, 0.294118, 0, 0.666667)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_w50kc"]
+gradient = SubResource("Gradient_k0kty")
+
+[sub_resource type="Curve" id="Curve_kb8p8"]
+_data = [Vector2(0.00502513, 0.285714), 0.0, 0.0, 0, 0, Vector2(0.226131, 1), 0.0, 0.0, 0, 0, Vector2(0.763819, 0.736264), 0.0, 0.0, 0, 0, Vector2(1, 0.175824), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_gm8p2"]
+curve = SubResource("Curve_kb8p8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2ff1h"]
+lifetime_randomness = 0.5
+emission_shape = 1
+emission_sphere_radius = 0.25
+direction = Vector3(0, 1, 0)
+spread = 10.0
+initial_velocity_min = 1.5
+initial_velocity_max = 2.0
+gravity = Vector3(0, 1, 0)
+scale_curve = SubResource("CurveTexture_gm8p2")
+color_ramp = SubResource("GradientTexture1D_w50kc")
+turbulence_enabled = true
+turbulence_noise_speed_random = 2.0
+turbulence_influence_min = 0.01
+turbulence_influence_max = 0.06
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kudrj"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("2_13m6x")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_ealk2"]
+material = SubResource("StandardMaterial3D_kudrj")
+size = Vector2(0.1, 0.1)
+
+[node name="InteractableCooker" type="Area3D"]
+collision_layer = 4
+collision_mask = 0
+monitorable = false
+script = ExtResource("1_2i5u4")
+prompt = "Cook"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+
+[node name="CookingTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="FoodVisualsHolder" type="Marker3D" parent="."]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 24
+lifetime = 0.5
+visibility_aabb = AABB(-1.01683, -1.2693, -1.22607, 2.03367, 2.5386, 2.45214)
+process_material = SubResource("ParticleProcessMaterial_2ff1h")
+draw_pass_1 = SubResource("QuadMesh_ealk2")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.360406, 0)
+visible = false
+layers = 3
+light_color = Color(1, 0.611765, 0.360784, 1)
+shadow_enabled = true
+
+[connection signal="timeout" from="CookingTimer" to="." method="cooking_finished"]

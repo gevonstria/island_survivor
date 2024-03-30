@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://y3qocepj3x8a"]
+
+[ext_resource type="PackedScene" uid="uid://d3kba8pgxmfwb" path="res://objects/constructables/constructable_template.tscn" id="1_pd5vc"]
+[ext_resource type="PackedScene" uid="uid://eiqtplru25fh" path="res://meshes/raft.tscn" id="2_txiu0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_csukw"]
+size = Vector3(1.02155, 0.350739, 0.592896)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0t8wg"]
+size = Vector3(2.51428, 0.185425, 4.98724)
+
+[node name="ConstructableRaft" instance=ExtResource("1_pd5vc")]
+
+[node name="Raft" parent="." index="0" instance=ExtResource("2_txiu0")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.366302, 0.242735, -1.82052)
+shape = SubResource("BoxShape3D_csukw")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000549316, -0.0185488, 0.0210876)
+shape = SubResource("BoxShape3D_0t8wg")

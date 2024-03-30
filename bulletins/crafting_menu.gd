@@ -45,17 +45,25 @@ func hide_crafting_info():
 	item_description_label.text = ""
 	item_extra_info_label.text = ""
 
-func update_inventory(inventory):
+func update_inventory(inventory: Array):
 	super(inventory)
 	
 	for crafting_button in crafting_button_grid_container.get_children():
-		var cost = ItemConfig.get_crafting_blueprint_resource(crafting_button.item_key).cost
+		var crafting_blueprint = ItemConfig.get_crafting_blueprint_resource(crafting_button.item_key)
 		var disabled_button = false
-		for cost_data in cost:
-			if inventory.count(cost_data.item_key) < cost_data.amount:
-				disabled_button = true
-				break
+		
+		if crafting_blueprint.needs_multitool and not ItemConfig.Keys.MultiTool in inventory:
+			disabled_button = true
+		elif crafting_blueprint.needs_tinderbox and not ItemConfig.Keys.TinderBox in inventory:
+			disabled_button = true
+		else:
+			for cost_data in crafting_blueprint.cost:
+				if inventory.count(cost_data.item_key) < cost_data.amount:
+					disabled_button = true
+					break
 		crafting_button.button.disabled = disabled_button
+		
+
 	
 func crafting_button_pressed(item_key):
 	EventSystem.INV_add_item.emit(item_key)

@@ -13,6 +13,7 @@ func _enter_tree() -> void:
 	EventSystem.INV_add_item.connect(add_item)
 	EventSystem.INV_delete_crafting_blueprint_cost.connect(delete_crafting_blueprint_cost)
 	EventSystem.INV_delete_item_by_index.connect(delete_item_by_index)
+	EventSystem.INV_add_item_by_index.connect(add_item_by_index)
 
 func _ready() -> void:
 	# init array size to inventory size
@@ -24,6 +25,7 @@ func _ready() -> void:
 	inventory[1] = ItemConfig.Keys.PickAxe
 	inventory[2] = ItemConfig.Keys.Tent
 	inventory[3] = ItemConfig.Keys.Campfire
+	inventory[4] = ItemConfig.Keys.RawMeat
 	
 func try_to_pickup_item(item_key, destroy_pickable):
 	if not get_free_slots():
@@ -83,4 +85,12 @@ func delete_item_by_index(idx, is_in_hotbar):
 		send_hotbar()
 	else:
 		inventory[idx] = null
+		send_inventory()
+		
+func add_item_by_index(item_key, idx, is_in_hotbar):
+	if is_in_hotbar:
+		hotbar[idx] = item_key
+		send_hotbar()
+	else:
+		inventory[idx] = item_key
 		send_inventory()

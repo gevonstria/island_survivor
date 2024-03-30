@@ -6,3 +6,4 @@ class_name ItemResource
 @export var icon : Texture2D
 @export_multiline var description = ""
 @export var is_equippable = false
+@export var cooking_recipe : CookingRecipeResource

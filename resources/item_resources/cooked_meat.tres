@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ConsumableItemResource" load_steps=4 format=3 uid="uid://ydw13ulqohl"]
+
+[ext_resource type="Resource" uid="uid://drfmvnafrfy3" path="res://resources/cooking_recipes/meat_recipe.tres" id="1_pc5vk"]
+[ext_resource type="Script" path="res://resources/item_resources/consumable_item_resource.gd" id="2_2qyi3"]
+[ext_resource type="Texture2D" uid="uid://dvhvgg5hqjfq4" path="res://textures/item_icons/cooked_meat.png" id="2_5w1n7"]
+
+[resource]
+script = ExtResource("2_2qyi3")
+health_change = 20.0
+energy_change = 20.0
+item_key = 9
+display_name = "Cooked Meat"
+icon = ExtResource("2_5w1n7")
+description = "A juicy meat good for protein source."
+is_equippable = true
+cooking_recipe = ExtResource("1_pc5vk")
