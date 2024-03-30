@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=3 format=3 uid="uid://d0mgesqtmfqc7"]
+
+[ext_resource type="Texture2D" uid="uid://bilmvmerkr6ia" path="res://textures/item_icons/flintstone.png" id="1_xpngn"]
+[ext_resource type="Script" path="res://resources/item_resources/item_resource.gd" id="2_mubd2"]
+
+[resource]
+script = ExtResource("2_mubd2")
+item_key = 7
+display_name = "Flint Stone"
+icon = ExtResource("1_xpngn")
+description = "A mineral use for igniting sparks."
+is_equippable = false

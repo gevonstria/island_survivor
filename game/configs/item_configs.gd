@@ -26,7 +26,7 @@ enum Keys {
 
 const CRAFTABLE_ITEM_KEYS = [
 	Keys.Axe,
-	#Keys.PickAxe,
+	Keys.PickAxe,
 	#Keys.Campfire,
 	#Keys.MultiTool,
 	Keys.Rope,
@@ -41,9 +41,13 @@ const ITEM_RESOURCE_PATHS = {
 	Keys.Stone: "res://resources/item_resources/stone_resource.tres",
 	Keys.Plant: "res://resources/item_resources/plant_resource.tres",
 	Keys.Axe: "res://resources/item_resources/axe.tres",
+	Keys.PickAxe: "res://resources/item_resources/pickaxe.tres",
 	Keys.Rope: "res://resources/item_resources/rope.tres",
 	Keys.Log: "res://resources/item_resources/log_item_resource.tres",
-	Keys.Mushroom: "res://resources/item_resources/mushroom.tres"
+	Keys.Mushroom: "res://resources/item_resources/mushroom.tres",
+	Keys.Coal: "res://resources/item_resources/coal_item_resource.tres",
+	Keys.FlintStone: "res://resources/item_resources/flint_stone_resource.tres",
+	Keys.RawMeat: "res://resources/item_resources/raw_meat_item_resource.tres"
 }
 
 static func get_item_resource(key):
@@ -51,7 +55,8 @@ static func get_item_resource(key):
 
 const CraftingBlueprintResource_PATHS = {
 	Keys.Axe: "res://resources/crafting_blueprint_resources/axe_blueprint.tres",
-	Keys.Rope: "res://resources/crafting_blueprint_resources/rope_blueprint.tres"
+	Keys.Rope: "res://resources/crafting_blueprint_resources/rope_blueprint.tres",
+	Keys.PickAxe: "res://resources/crafting_blueprint_resources/pickaxe_blueprint.tres"
 }
 
 static func get_crafting_blueprint_resource(key):
@@ -59,6 +64,7 @@ static func get_crafting_blueprint_resource(key):
 	
 const EQUIPPABLE_ITEM_PATHS = {
 	Keys.Axe: "res://items/equippables/equippable_axe_template.tscn",
+	Keys.PickAxe: "res://items/equippables/equippable_pickaxe_template.tscn",
 	Keys.Mushroom: "res://items/equippables/equippable_mushroom_template.tscn"
 }
 
@@ -66,7 +72,10 @@ static func get_equippable_item_resource(key):
 	return load(EQUIPPABLE_ITEM_PATHS.get(key))
 	
 const PICKABLE_ITEM_PATHS = {
-	Keys.Log: "res://items/interactables/rigid_pickable_log_template.tscn"
+	Keys.Log: "res://items/interactables/rigid_pickable_log_template.tscn",
+	Keys.Coal: "res://items/interactables/rigid_pickable_coal_template.tscn",
+	Keys.FlintStone: "res://items/interactables/rigid_pickable_flintstone_template.tscn",
+	Keys.RawMeat: "res://items/interactables/rigid_pickable_raw_meat_template.tscn"
 }
 
 static func get_pickable_item_resource(key):

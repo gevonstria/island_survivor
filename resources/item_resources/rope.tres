@@ -5,7 +5,8 @@
 
 [resource]
 script = ExtResource("2_66tq3")
-item_key = 2
-display_name = "Plant"
+item_key = 14
+display_name = "Rope"
 icon = ExtResource("1_xlflc")
-description = "This is a plant."
+description = "A crude rope made of twisted plant parts."
+is_equippable = false
