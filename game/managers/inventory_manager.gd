@@ -22,6 +22,7 @@ func _ready() -> void:
 	# add temp items
 	inventory[0] = ItemConfig.Keys.Axe
 	inventory[1] = ItemConfig.Keys.PickAxe
+	inventory[2] = ItemConfig.Keys.Tent
 	
 func try_to_pickup_item(item_key, destroy_pickable):
 	if not get_free_slots():
