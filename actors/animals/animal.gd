@@ -7,7 +7,9 @@ enum States {
 	Wander,
 	Dead,
 	Flee,
-	Hurt
+	Hurt,
+	Chase,
+	Attack
 }
 var state = States.Idle
 
@@ -15,13 +17,15 @@ var state = States.Idle
 @onready var wander_timer: Timer = $Timer/WanderTimer
 @onready var disappear_after_timer: Timer = $Timer/DisappearAfterTimer
 @onready var flee_timer: Timer = $Timer/FleeTimer
+@onready var eyes_marker: Marker3D = $EyesMarker
+@onready var attack_hit_area: Area3D = $AttackHitArea
+@onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D
+@onready var vision_area_collision_shape_3d: CollisionShape3D = $VisionArea/VisionAreaCollisionShape3D
+
 
 @onready var player : CharacterBody3D = get_tree().get_first_node_in_group("Player")
-
 @onready var main_collision_shape: CollisionShape3D = $MainCollisionShape
-
 @onready var meat_spawn_marker: Marker3D = $MeatSpawnMarker
-
 @onready var animation_player : AnimationPlayer = %AnimationPlayer
 
 @export var normal_speed = 0.6
@@ -36,12 +40,17 @@ var state = States.Idle
 @export var max_wander_time = 4.0
 @export var is_aggressive = false
 @export var flee_timer_length = 3.0
-
+@export var attacking_distance = 2.0
+@export var damage = 20.0
+@export var vision_range = 15
+@export var vision_fov = 80
 
 var health = max_health
+var player_in_vision_range = false
 
 func _ready() -> void:
 	animation_player.animation_finished.connect(animation_finished)
+	vision_area_collision_shape_3d.shape.radius = vision_range
 	
 func animation_finished(anim_name):
 	if state == States.Idle:
@@ -49,20 +58,58 @@ func animation_finished(anim_name):
 	elif state == States.Hurt:
 		if not is_aggressive:
 			set_state(States.Flee)
+		else:
+			set_state(States.Chase)
+	
+	if state == States.Attack:
+		set_state(States.Chase)
 		
 func _physics_process(_delta: float) -> void:
-	if state == States.Wander:
+	if state == States.Idle:
+		idle_loop()
+	elif state == States.Wander:
 		wander_loop()
 	elif state == States.Flee:
 		flee_loop()
+	elif state == States.Chase:
+		chase_loop()
+	elif state == States.Attack:
+		attack_loop()
+		
+func idle_loop():	
+	if is_aggressive and can_see_player():
+		set_state(States.Chase)
 		
 func wander_loop():
 	look_forward()
 	move_and_slide()
 	
+	if is_aggressive and can_see_player():
+		set_state(States.Chase)
+	
 func flee_loop():
 	look_forward()
 	move_and_slide()
+	
+func chase_loop():
+	look_forward()
+	if global_position.distance_to(player.global_position) < attacking_distance:
+		set_state(States.Attack)
+		return
+		
+	navigation_agent_3d.target_position = player.global_position
+	var dir = global_position.direction_to(navigation_agent_3d.get_next_path_position())
+	dir.y = 0
+	velocity = dir.normalized() * alarmed_speed
+	move_and_slide()
+	
+func attack_loop():
+	var dir = global_position.direction_to(player.global_position)
+	rotation.y = lerp_angle(rotation.y, atan2(dir.x, dir.z) + PI, turn_speed_weight)
+	
+func attack():
+	if player in attack_hit_area.get_overlapping_bodies():
+		EventSystem.PLA_change_health.emit(-damage)
 	
 func look_forward():
 	rotation.y = lerp_angle(rotation.y, atan2(velocity.x, velocity.z) + PI, turn_speed_weight)
@@ -70,6 +117,9 @@ func look_forward():
 func pick_wander_velocity():
 	var dir = Vector2(0,-1).rotated(randf() * PI * 2)
 	velocity = Vector3(dir.x, 0, dir.y) * normal_speed
+
+func can_see_player():
+	return player_in_vision_range and player_in_fov() and player_in_los()
 	
 func _on_ilde_timer_timeout() -> void:
 	set_state(States.Wander)
@@ -87,7 +137,6 @@ func _on_flee_timer_timeout() -> void:
 	
 func set_state(new_state):
 	state = new_state
-	
 	match state:
 		States.Idle:
 			idle_timer.start(randf_range(min_idle_time, max_idle_time))
@@ -114,6 +163,13 @@ func set_state(new_state):
 		States.Flee:
 			pick_away_from_player_velocity()
 			animation_player.play("Gallop", ANIM_BLEND)
+		States.Chase:
+			idle_timer.stop()
+			wander_timer.stop()
+			flee_timer.stop()
+			animation_player.play("Gallop", ANIM_BLEND)
+		States.Attack:
+			animation_player.play("Attack", ANIM_BLEND)
 
 
 func take_hit(weapon_item_resource) -> void:
@@ -132,5 +188,33 @@ func pick_away_from_player_velocity():
 	dir.y = 0
 	velocity = dir.normalized() * alarmed_speed
 	flee_timer.start(flee_timer_length)
-	
 
+func player_in_fov():
+	if not player:
+		return false
+		
+	var direction_to_player = global_position.direction_to(player.global_position)
+	var forward = -global_transform.basis.z
+	return direction_to_player.angle_to(forward) <= deg_to_rad(vision_fov)
+	
+func player_in_los():
+	if not player:
+		return false
+		
+	var query_params = PhysicsRayQueryParameters3D.new()
+	query_params.from = eyes_marker.global_position
+	query_params.to = player.head.global_position
+	query_params.collision_mask = 1 + 64
+	var space_state = get_world_3d().direct_space_state
+	var result = space_state.intersect_ray(query_params)
+	
+	return result.is_empty()
+	
+	
+func _on_vision_area_body_entered(body: Node3D) -> void:
+	if body == player:
+		player_in_vision_range = true
+
+func _on_vision_area_body_exited(body: Node3D) -> void:
+	if body == player:
+		player_in_vision_range = false
