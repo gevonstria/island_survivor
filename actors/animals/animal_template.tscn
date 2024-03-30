@@ -26,9 +26,14 @@ autostart = true
 one_shot = true
 autostart = true
 
+[node name="FleeTimer" type="Timer" parent="Timer"]
+one_shot = true
+autostart = true
+
 [node name="MeatSpawnMarker" type="Marker3D" parent="."]
 
 [connection signal="register_hit" from="HitBox" to="." method="take_hit"]
 [connection signal="timeout" from="Timer/IdleTimer" to="." method="_on_ilde_timer_timeout"]
 [connection signal="timeout" from="Timer/WanderTimer" to="." method="_on_wander_timer_timeout"]
 [connection signal="timeout" from="Timer/DisappearAfterTimer" to="." method="_on_disappear_after_timer_timeout"]
+[connection signal="timeout" from="Timer/FleeTimer" to="." method="_on_flee_timer_timeout"]

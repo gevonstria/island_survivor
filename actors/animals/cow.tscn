@@ -42,7 +42,6 @@ roughness = 0.5
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rentm"]
 resource_name = "Eye_White"
 cull_mode = 2
-albedo_color = Color(1, 1, 1, 1)
 roughness = 0.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qm5rd"]
@@ -4359,6 +4358,7 @@ _data = {
 
 [node name="Cow" instance=ExtResource("1_y4bhi")]
 idle_animations = Array[String](["Idle", "Idle_2", "Eating", "Idle_Headlow"])
+hurt_animations = Array[String](["Idle_HitReact1", "Idle_HitReact2"])
 
 [node name="MainCollisionShape" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.424841, 0)
