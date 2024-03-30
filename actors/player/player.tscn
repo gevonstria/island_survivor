@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://c0jgi2ob22am"]
+[gd_scene load_steps=9 format=3 uid="uid://c0jgi2ob22am"]
 
 [ext_resource type="Script" path="res://actors/player/player.gd" id="1_xinmw"]
+[ext_resource type="Script" path="res://actors/player/main_camera.gd" id="2_4mnnj"]
 [ext_resource type="Script" path="res://actors/player/interaction_raycast.gd" id="2_sndod"]
 [ext_resource type="Script" path="res://game/managers/inventory_manager.gd" id="3_7giv4"]
 [ext_resource type="Script" path="res://actors/player/equippable_item_holder.gd" id="3_v465l"]
 [ext_resource type="Script" path="res://game/managers/equip_item_manager.gd" id="4_igihg"]
+[ext_resource type="Script" path="res://game/managers/player_manager.gd" id="7_m4l3m"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_aye3v"]
 radius = 0.25
@@ -21,7 +23,9 @@ shape = SubResource("CapsuleShape3D_aye3v")
 [node name="Head" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.719525, 0)
 
-[node name="Camera3D" type="Camera3D" parent="Head"]
+[node name="MainCamera" type="Camera3D" parent="Head"]
+cull_mask = 1048573
+script = ExtResource("2_4mnnj")
 
 [node name="InteractionRayCast" type="RayCast3D" parent="Head"]
 target_position = Vector3(0, 0, -2)
@@ -29,7 +33,25 @@ collision_mask = 4
 collide_with_areas = true
 script = ExtResource("2_sndod")
 
-[node name="EquippableItemHolder" type="Node3D" parent="Head"]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Head"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="Head/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+gui_disable_input = true
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="EquippableItemCamera" type="Camera3D" parent="Head/SubViewportContainer/SubViewport"]
+cull_mask = 1048574
+
+[node name="EquippableItemHolder" type="Node3D" parent="Head/SubViewportContainer/SubViewport/EquippableItemCamera"]
 script = ExtResource("3_v465l")
 
 [node name="Managers" type="Node" parent="."]
@@ -39,3 +61,6 @@ script = ExtResource("3_7giv4")
 
 [node name="EquipItemManager" type="Node" parent="Managers"]
 script = ExtResource("4_igihg")
+
+[node name="PlayerStatsManager" type="Node" parent="Managers"]
+script = ExtResource("7_m4l3m")
