@@ -48,7 +48,8 @@ const ITEM_RESOURCE_PATHS = {
 	Keys.Coal: "res://resources/item_resources/coal_item_resource.tres",
 	Keys.FlintStone: "res://resources/item_resources/flint_stone_resource.tres",
 	Keys.RawMeat: "res://resources/item_resources/raw_meat_item_resource.tres",
-	Keys.Tent: "res://resources/item_resources/tent_resource.tres"
+	Keys.Tent: "res://resources/item_resources/tent_resource.tres",
+	Keys.Campfire: "res://resources/item_resources/campfire_resource.tres"
 }
 
 static func get_item_resource(key):
@@ -67,7 +68,8 @@ const EQUIPPABLE_ITEM_PATHS = {
 	Keys.Axe: "res://items/equippables/equippable_axe_template.tscn",
 	Keys.PickAxe: "res://items/equippables/equippable_pickaxe_template.tscn",
 	Keys.Mushroom: "res://items/equippables/equippable_mushroom_template.tscn",
-	Keys.Tent: "res://items/equippables/equippable_tent_template.tscn"
+	Keys.Tent: "res://items/equippables/equippable_tent_template.tscn",
+	Keys.Campfire: "res://items/equippables/equippable_campfire_template.tscn"
 }
 
 static func get_equippable_item_resource(key):
@@ -84,7 +86,8 @@ static func get_pickable_item_resource(key):
 	return load(PICKABLE_ITEM_PATHS.get(key))
 	
 const CONSTRUCTABLE_SCENES_PATHS = {
-	Keys.Tent: "res://objects/constructables/constructable_tent.tscn"
+	Keys.Tent: "res://objects/constructables/constructable_tent.tscn",
+	Keys.Campfire: "res://objects/constructables/constructable_campfire.tscn"
 }
 
 static func get_constructable_scene(key):
