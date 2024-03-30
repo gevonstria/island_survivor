@@ -1,11 +1,11 @@
 [gd_scene load_steps=15 format=3 uid="uid://dmgusaxuyelpn"]
 
 [ext_resource type="PackedScene" uid="uid://cqv1te5gsmcqu" path="res://meshes/terrain.tscn" id="1_jkgg7"]
-[ext_resource type="PackedScene" uid="uid://byilx5u8nm1jg" path="res://meshes/mushroom.tscn" id="3_4hv4s"]
 [ext_resource type="PackedScene" uid="uid://c0jgi2ob22am" path="res://actors/player/player.tscn" id="4_3rcg3"]
 [ext_resource type="PackedScene" uid="uid://cx1uddu2wq3xj" path="res://items/interactables/pickable_stick.tscn" id="5_ihuhw"]
 [ext_resource type="PackedScene" uid="uid://utcl1x1kr6r" path="res://items/interactables/pickable_stone.tscn" id="6_bkyo2"]
 [ext_resource type="PackedScene" uid="uid://ccfpwxfs4sr1i" path="res://items/interactables/pickable_plant.tscn" id="7_ffbtx"]
+[ext_resource type="PackedScene" uid="uid://gw3akp35ecct" path="res://items/interactables/pickable_mushroom.tscn" id="8_6hokc"]
 [ext_resource type="PackedScene" uid="uid://dqws2vush73ew" path="res://objects/hittable_objects/hittable_tree_template.tscn" id="8_14uqk"]
 [ext_resource type="PackedScene" uid="uid://5nknnmn6f5sf" path="res://game/managers/spawner.tscn" id="8_ak1h5"]
 
@@ -56,15 +56,6 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_f1l5a")
 
-[node name="Mushroom" parent="." instance=ExtResource("3_4hv4s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.4003, 0, 8.52038)
-
-[node name="Mushroom2" parent="." instance=ExtResource("3_4hv4s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.2992, -2.38419e-07, 19.0956)
-
-[node name="Mushroom3" parent="." instance=ExtResource("3_4hv4s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.7297, 0, 10.6522)
-
 [node name="Player" parent="." instance=ExtResource("4_3rcg3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.3627, 0.935385, 6.00402)
 
@@ -96,3 +87,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.932, 0, 0)
 
 [node name="HittableTreeTemplate2" parent="." instance=ExtResource("8_14uqk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 7)
+
+[node name="PickableMushroom2" parent="." instance=ExtResource("8_6hokc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.6537, 0, 0.755708)
+
+[node name="PickableMushroom3" parent="." instance=ExtResource("8_6hokc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.2547, 0, 0.636575)
+
+[node name="PickableMushroom" parent="." instance=ExtResource("8_6hokc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.2547, 0, 0)

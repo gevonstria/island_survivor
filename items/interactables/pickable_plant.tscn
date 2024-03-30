@@ -17,4 +17,4 @@ prompt = "Pick Up Plant"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.257038, 0)
 shape = SubResource("CapsuleShape3D_hyxy5")
 
-[node name="Plant" parent="Pickable" index="1" instance=ExtResource("2_nhr0d")]
+[node name="Plant" parent="." index="1" instance=ExtResource("2_nhr0d")]

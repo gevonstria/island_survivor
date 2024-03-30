@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://gw3akp35ecct"]
+
+[ext_resource type="PackedScene" uid="uid://cngs43m42uks4" path="res://items/interactables/pickable_template.tscn" id="1_6rltd"]
+[ext_resource type="PackedScene" uid="uid://byilx5u8nm1jg" path="res://meshes/mushroom.tscn" id="2_7fixx"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hyxy5"]
+radius = 0.148081
+height = 0.296161
+
+[node name="PickableMushroom" instance=ExtResource("1_6rltd")]
+
+[node name="Pickable" parent="." index="0"]
+item_key = 3
+prompt = "Pick Up Mushroom"
+
+[node name="CollisionShape3D" parent="Pickable" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125663, 0)
+shape = SubResource("CapsuleShape3D_hyxy5")
+
+[node name="Mushroom" parent="." index="1" instance=ExtResource("2_7fixx")]

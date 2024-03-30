@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ConsumableItemResource" load_steps=3 format=3 uid="uid://b8ursbum3ja77"]
+
+[ext_resource type="Script" path="res://resources/item_resources/consumable_item_resource.gd" id="1_ri5xr"]
+[ext_resource type="Texture2D" uid="uid://jxb4lanv1oi1" path="res://textures/item_icons/mushroom.png" id="1_x8iy5"]
+
+[resource]
+script = ExtResource("1_ri5xr")
+health_change = -5.0
+energy_change = 10.0
+item_key = 3
+display_name = "Mushroom"
+icon = ExtResource("1_x8iy5")
+description = "A wild mushroom, careful, might be poisonous."
+is_equippable = true
