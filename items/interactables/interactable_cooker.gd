@@ -5,6 +5,8 @@ class_name InteractableCooker
 @onready var food_visuals_holder: Marker3D = $FoodVisualsHolder
 @onready var gpu_particles_3d: GPUParticles3D = $GPUParticles3D
 @onready var fire_light: OmniLight3D = $OmniLight3D
+@onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D
+
 
 @export var fire_always_on = true
 
@@ -23,6 +25,7 @@ func _ready() -> void:
 	if fire_always_on:
 		gpu_particles_3d.emitting = true
 		fire_light.show()
+		audio_stream_player_3d.play()
 
 func start_interaction():
 	EventSystem.BUL_create_bulletin.emit(BulletinConfig.Keys.CookingMenu, [
@@ -55,6 +58,7 @@ func start_cooking():
 	if not fire_always_on:
 		gpu_particles_3d.emitting = true
 		fire_light.show()
+		audio_stream_player_3d.play()
 		
 func cooking_finished():
 	state = CookingStates.Cooked
@@ -63,6 +67,7 @@ func cooking_finished():
 	if not fire_always_on:
 		gpu_particles_3d.emitting = false
 		fire_light.hide()
+		audio_stream_player_3d.stop()
 		
 	food_visuals_holder.add_child(cooking_recipe.cooked_item_visuals.instantiate())
 

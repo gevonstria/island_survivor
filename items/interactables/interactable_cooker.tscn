@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://bpuuy4yd4qkjq"]
+[gd_scene load_steps=11 format=3 uid="uid://bpuuy4yd4qkjq"]
 
 [ext_resource type="Script" path="res://items/interactables/interactable_cooker.gd" id="1_2i5u4"]
 [ext_resource type="Texture2D" uid="uid://cbls513iyjkl8" path="res://textures/circle32.png" id="2_13m6x"]
+[ext_resource type="AudioStream" uid="uid://by6om3csa8vly" path="res://audio/sfx/campfire.wav" id="3_fmfqn"]
 
 [sub_resource type="Gradient" id="Gradient_k0kty"]
 offsets = PackedFloat32Array(0, 0.567251, 1)
@@ -76,5 +77,10 @@ visible = false
 layers = 3
 light_color = Color(1, 0.611765, 0.360784, 1)
 shadow_enabled = true
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_fmfqn")
+unit_size = 7.0
+bus = &"SFX"
 
 [connection signal="timeout" from="CookingTimer" to="." method="cooking_finished"]
