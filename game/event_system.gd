@@ -19,6 +19,7 @@ signal PLA_change_energy
 signal PLA_energy_updated
 signal PLA_change_health
 signal PLA_health_updated
+signal PLA_sleep
 
 signal EQU_hotkey_pressed
 signal EQU_equip_item
@@ -30,5 +31,9 @@ signal SPA_spawn_scene
 
 signal SFX_play_sfx
 signal SFX_play_dynamic_sfx
+
+signal GAM_fast_forward_day_night_anim
+signal GAM_game_fade_in
+signal GAM_game_fade_out
 
 

@@ -14,7 +14,8 @@ enum Keys {
 	WolfHurt,
 	WolfAttack,
 	FootStep,
-	JumpLand
+	JumpLand,
+	EnterTent
 }
 
 const FILE_PATHS := {
@@ -31,7 +32,8 @@ const FILE_PATHS := {
 	Keys.WolfHurt: "res://audio/sfx/wolf_hurt.wav",
 	Keys.WolfAttack: "res://audio/sfx/wolf_attack.wav",
 	Keys.FootStep: "res://audio/sfx/footstep.wav",
-	Keys.JumpLand: "res://audio/sfx/jump_land.wav"
+	Keys.JumpLand: "res://audio/sfx/jump_land.wav",
+	Keys.EnterTent: "res://audio/sfx/go_in_tent.wav"
 }
 
 static func get_audio_stream(key):
