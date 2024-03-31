@@ -68,3 +68,4 @@ func update_inventory(inventory: Array):
 func crafting_button_pressed(item_key):
 	EventSystem.INV_add_item.emit(item_key)
 	EventSystem.INV_delete_crafting_blueprint_cost.emit(ItemConfig.get_crafting_blueprint_resource(item_key).cost)
+	EventSystem.SFX_play_sfx.emit(SFXConfig.Keys.Craft)

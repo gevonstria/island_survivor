@@ -70,6 +70,7 @@ func start_cooking():
 	
 	if cooking_state != InteractableCooker.CookingStates.Cooking:
 		interactable_cooker.start_cooking()
+		EventSystem.SFX_play_sfx.emit(SFXConfig.Keys.UIClick)
 	
 func finished_cooking():
 	final_cooking_slot.set_item_key(cooking_recipe.cooked_item)
@@ -81,3 +82,4 @@ func close():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	EventSystem.BUL_destroy_bulletin.emit(BulletinConfig.Keys.CookingMenu)
 	EventSystem.PLA_unfreeze_player.emit()
+	EventSystem.SFX_play_sfx.emit(SFXConfig.Keys.UIClick)

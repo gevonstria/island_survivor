@@ -25,3 +25,6 @@ func check_hit():
 		
 func change_energy():
 	EventSystem.PLA_change_energy.emit(weapon_item_resource.energy_change_per_use)
+	
+func play_swoosh_audio():
+	EventSystem.SFX_play_sfx.emit(SFXConfig.Keys.WeaponSwoosh)

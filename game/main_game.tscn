@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://ppn1n247flea"]
+[gd_scene load_steps=6 format=3 uid="uid://ppn1n247flea"]
 
 [ext_resource type="Script" path="res://game/managers/stage_controller.gd" id="1_x6yra"]
 [ext_resource type="Script" path="res://game/managers/music_controller.gd" id="4_wlr5o"]
+[ext_resource type="Script" path="res://game/managers/sfx_controller.gd" id="5_l5x43"]
 [ext_resource type="PackedScene" uid="uid://vtrh0npepa4h" path="res://ui/hud/hud.tscn" id="8_0aetx"]
 [ext_resource type="Script" path="res://game/managers/bulletin_controller.gd" id="9_hhw7g"]
 
@@ -21,3 +22,6 @@ script = ExtResource("9_hhw7g")
 
 [node name="MusicController" type="AudioStreamPlayer" parent="."]
 script = ExtResource("4_wlr5o")
+
+[node name="SFXController" type="AudioStreamPlayer" parent="."]
+script = ExtResource("5_l5x43")

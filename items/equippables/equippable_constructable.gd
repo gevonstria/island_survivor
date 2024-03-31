@@ -58,7 +58,7 @@ func try_to_construct():
 		constructable_area.global_transform
 	)
 	is_constructing = true
-
+	EventSystem.SFX_play_sfx.emit(SFXConfig.Keys.Build)
 
 func destroy_self():
 	if not is_constructing:

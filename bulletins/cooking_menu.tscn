@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bhypo855ygx6h"]
+[gd_scene load_steps=10 format=3 uid="uid://bhypo855ygx6h"]
 
 [ext_resource type="PackedScene" uid="uid://bj5sqvpo82wss" path="res://bulletins/player_menus.tscn" id="1_mbq1o"]
 [ext_resource type="Script" path="res://bulletins/cooking_menu.gd" id="2_s8rbi"]
@@ -6,8 +6,6 @@
 [ext_resource type="Script" path="res://ui/custom_nodes/starting_cooking_slot.gd" id="3_qmrof"]
 [ext_resource type="Texture2D" uid="uid://64enpqbsjc0u" path="res://textures/square32.png" id="3_u63ld"]
 [ext_resource type="Script" path="res://ui/custom_nodes/final_cooking_slot.gd" id="5_4adhh"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s34ij"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_150cc"]
 bg_color = Color(0, 0, 0, 0.235294)
@@ -62,11 +60,9 @@ layout_mode = 2
 size_flags_horizontal = 4
 focus_mode = 0
 theme_override_font_sizes/font_size = 28
-theme_override_styles/normal = SubResource("StyleBoxEmpty_s34ij")
 theme_override_styles/hover = SubResource("StyleBoxFlat_150cc")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_a61gx")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_s43vk")
-disabled = true
 text = "Cook"
 
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/UtilityNinePatchRect/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/Button" to="." method="start_cooking"]
