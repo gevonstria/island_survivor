@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://ppn1n247flea"]
+[gd_scene load_steps=8 format=3 uid="uid://ppn1n247flea"]
 
 [ext_resource type="Script" path="res://game/managers/stage_controller.gd" id="1_x6yra"]
+[ext_resource type="Script" path="res://game/managers/hud_controller.gd" id="2_lmy14"]
 [ext_resource type="Script" path="res://game/managers/music_controller.gd" id="4_wlr5o"]
 [ext_resource type="Script" path="res://game/managers/sfx_controller.gd" id="5_l5x43"]
 [ext_resource type="Script" path="res://game/managers/game_fade_controller.gd" id="6_vkf80"]
@@ -15,6 +16,7 @@ script = ExtResource("1_x6yra")
 [node name="UILayer" type="CanvasLayer" parent="."]
 
 [node name="HUDController" type="Node" parent="UILayer"]
+script = ExtResource("2_lmy14")
 
 [node name="Hud" parent="UILayer/HUDController" instance=ExtResource("8_0aetx")]
 
@@ -27,12 +29,30 @@ script = ExtResource("4_wlr5o")
 [node name="SFXController" type="AudioStreamPlayer" parent="."]
 script = ExtResource("5_l5x43")
 
-[node name="GameFadeController" type="ColorRect" parent="."]
+[node name="FadingLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="GameFadeController" type="ColorRect" parent="FadingLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0, 0, 0, 0)
+color = Color(0, 0, 0, 1)
 script = ExtResource("6_vkf80")
+
+[node name="LoadingLabel" type="Label" parent="FadingLayer/GameFadeController"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -75.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Loading..."
+horizontal_alignment = 1
+vertical_alignment = 1

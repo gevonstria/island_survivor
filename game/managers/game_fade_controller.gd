@@ -1,6 +1,8 @@
 extends ColorRect
 class_name GameFadeController
 
+@onready var loading_label: Label = $LoadingLabel
+
 func _enter_tree() -> void:
 	EventSystem.GAM_game_fade_in.connect(fade_in)
 	EventSystem.GAM_game_fade_out.connect(fade_out)
@@ -12,7 +14,10 @@ func fade_in(fade_time, maybe_callback = null):
 	
 	if maybe_callback is Callable:
 		tween.tween_callback(maybe_callback)
-
+	
+	if loading_label:
+		loading_label.show()
+	
 func set_master_volume(volume_linear):
 	AudioServer.set_bus_volume_db(0, linear_to_db(volume_linear))
 	
@@ -23,3 +28,5 @@ func fade_out(fade_time, maybe_callback = null):
 	
 	if maybe_callback is Callable:
 		tween.tween_callback(maybe_callback)
+	
+	loading_label.hide()

@@ -20,7 +20,7 @@ var is_sprinting = false
 
 func _enter_tree() -> void:
 	EventSystem.PLA_freeze_player.connect(set_freeze.bind(true))
-	EventSystem.PLA_unfreeze_player.connect(set_freeze.bind(false))
+	EventSystem.PLA_unfreeze_player.connect(set_freeze.bind(false))	
 	
 func set_freeze(freeze):
 	set_process(!freeze)
@@ -31,6 +31,7 @@ func set_freeze(freeze):
 	
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	EventSystem.HUD_show_hud.emit()
 
 func _process(_delta: float) -> void:
 	interaction_ray_cast.check_interaction()
@@ -95,8 +96,12 @@ func look_around(relative):
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		EventSystem.BUL_create_bulletin.emit(BulletinConfig.Keys.PauseMenu, null)
+		set_freeze(true)
 	elif event.is_action_pressed("open_crafting_menu"):
 		EventSystem.BUL_create_bulletin.emit(BulletinConfig.Keys.CraftingMenu, null)
 	elif event.is_action_pressed("item_hot_key"):
 		EventSystem.EQU_hotkey_pressed.emit(int(event.as_text()))
+		
+func _exit_tree() -> void:
+	EventSystem.HUD_hide_hud.emit()

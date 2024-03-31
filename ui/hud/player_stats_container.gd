@@ -4,8 +4,10 @@ extends VBoxContainer
 @onready var health_bar: TextureProgressBar = $HealthBar
 
 func _enter_tree() -> void:
-	EventSystem.PLA_energy_updated.connect(energy_updated)
-	EventSystem.PLA_health_updated.connect(health_updated)
+	if not EventSystem.PLA_energy_updated.is_connected(energy_updated):
+		EventSystem.PLA_energy_updated.connect(energy_updated)
+	if not EventSystem.PLA_health_updated.is_connected(health_updated):
+		EventSystem.PLA_health_updated.connect(health_updated)
 	
 func energy_updated(max_energy, current_energy):
 	energy_bar.max_value = max_energy

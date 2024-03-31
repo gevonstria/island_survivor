@@ -1,8 +1,12 @@
 extends HBoxContainer
 
 func _enter_tree() -> void:
-	EventSystem.INV_hotbar_updated.connect(update_hotbar)
-	EventSystem.EQU_active_hotbar_slot_updated.connect(active_slot_updated)
+	if not EventSystem.INV_hotbar_updated.is_connected(update_hotbar):
+			EventSystem.INV_hotbar_updated.connect(update_hotbar)
+	if not EventSystem.EQU_active_hotbar_slot_updated.is_connected(active_slot_updated):
+		EventSystem.EQU_active_hotbar_slot_updated.connect(active_slot_updated)
+	if not EventSystem.EQU_unequip_item.is_connected(active_slot_updated):
+		EventSystem.EQU_unequip_item.connect(active_slot_updated.bind(null))
 
 func update_hotbar(hotbar):
 	for slot in get_children():
