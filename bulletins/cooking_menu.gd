@@ -29,7 +29,7 @@ func _ready() -> void:
 		starting_cooking_slot.set_item_key(cooking_recipe.uncooked_item)
 		start_cooking()
 	elif cooking_state == InteractableCooker.CookingStates.Cooked:
-		final_cooking_slot.set_item_key(cooking_recipe.uncooked_item)
+		final_cooking_slot.set_item_key(cooking_recipe.cooked_item)
 	
 	super()
 	

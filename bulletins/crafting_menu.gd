@@ -29,7 +29,7 @@ func show_crafting_info(item_key):
 	if blueprint.needs_multitool:
 		item_extra_info_label.text += "\nMultitool"
 		
-	if blueprint.needs_tindexbox:
+	if blueprint.needs_tinderbox:
 		item_extra_info_label.text += "\nTinderBox"
 		
 	for cost_resource in blueprint.cost:
