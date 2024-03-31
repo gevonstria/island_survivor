@@ -6,11 +6,16 @@ extends CharacterBody3D
 @export var gravity = .2
 @export var mouse_sensitivity = .005
 @export var walking_energy_consumption_per_m = -0.05
+@export var walking_footstep_audio_interval = 0.6
+@export var sprinting_footstep_audio_interval = 0.3
 
 @onready var head: Node3D = $Head
 @onready var interaction_ray_cast: RayCast3D = $Head/InteractionRayCast
 @onready var equippable_item_holder: Node3D = $Head/SubViewportContainer/SubViewport/EquippableItemCamera/EquippableItemHolder
+@onready var foot_step_audio_timer: Timer = $FootStepAudioTimer
 
+var is_grounded = true
+var is_sprinting = false
 
 
 func _enter_tree() -> void:
@@ -38,14 +43,24 @@ func _physics_process(delta: float) -> void:
 		equippable_item_holder.try_to_use_item()
 	
 func move():
-	var is_sprinting = false
+	is_sprinting = false
 	if is_on_floor():
 		is_sprinting = Input.is_action_pressed("sprint")
 		
 		if Input.is_action_just_pressed("jump"):
 			velocity.y = jump_velocity
+			
+		if velocity != Vector3.ZERO and foot_step_audio_timer.is_stopped():
+			EventSystem.SFX_play_dynamic_sfx.emit(SFXConfig.Keys.FootStep, global_position, 0.3)
+			foot_step_audio_timer.start(walking_footstep_audio_interval if not is_sprinting else sprinting_footstep_audio_interval)
+			
+		if not is_grounded:
+			is_grounded = true
+			EventSystem.SFX_play_dynamic_sfx.emit(SFXConfig.Keys.JumpLand, global_position)
 	else:
 		velocity.y -= gravity
+		if is_grounded:
+			is_grounded = false
 		is_sprinting = false
 		
 	var speed = 0

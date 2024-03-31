@@ -44,6 +44,7 @@ var state = States.Idle
 @export var damage = 20.0
 @export var vision_range = 15
 @export var vision_fov = 80
+@export var attack_audio_key = SFXConfig.Keys.WolfAttack
 
 var health = max_health
 var player_in_vision_range = false
@@ -218,3 +219,6 @@ func _on_vision_area_body_entered(body: Node3D) -> void:
 func _on_vision_area_body_exited(body: Node3D) -> void:
 	if body == player:
 		player_in_vision_range = false
+		
+func play_attack_audio():
+	EventSystem.SFX_play_dynamic_sfx.emit(attack_audio_key, global_position)

@@ -28,6 +28,9 @@ transform = Transform3D(0.700648, -0.713507, 0, 0.713507, 0.700648, 0, 0, 0, 1, 
 [node name="Marker3D4" type="Marker3D" parent="ItemSpawnPoints" index="3"]
 transform = Transform3D(0.923859, 0.382732, 0, -0.382732, 0.923859, 0, 0, 0, 1, -0.000994921, 0.120324, 0)
 
+[node name="HitBox" parent="." index="2"]
+hit_audio_key = 7
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.205915, 0)
 shape = SubResource("SphereShape3D_5fwls")

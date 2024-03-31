@@ -29,5 +29,6 @@ signal EQU_delete_equip_item
 signal SPA_spawn_scene
 
 signal SFX_play_sfx
+signal SFX_play_dynamic_sfx
 
 

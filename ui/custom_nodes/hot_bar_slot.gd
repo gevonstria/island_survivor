@@ -11,7 +11,6 @@ func _can_drop_data(_at_position: Vector2, origin_slot: Variant) -> bool:
 	if not origin_slot is InventorySlot:
 		return false
 	
-	print(ItemConfig.get_item_resource(origin_slot.item_key).is_equippable)
 	return ItemConfig.get_item_resource(origin_slot.item_key).is_equippable
 	
 func set_highlighted(enabled):
