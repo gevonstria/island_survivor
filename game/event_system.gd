@@ -49,3 +49,5 @@ signal SET_sfx_volume_changed
 signal SET_res_scale_changed
 signal SET_ssaa_changed
 signal SET_fullscreen_changed
+signal SET_ask_settings_resource
+signal SET_save_settings
