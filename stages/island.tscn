@@ -220,6 +220,7 @@ _data = {
 }
 
 [node name="Island" type="Node"]
+process_mode = 1
 script = ExtResource("1_owl2e")
 music_to_play = 0
 

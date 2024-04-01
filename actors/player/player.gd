@@ -97,7 +97,6 @@ func look_around(relative):
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		EventSystem.BUL_create_bulletin.emit(BulletinConfig.Keys.PauseMenu, null)
-		set_freeze(true)
 	elif event.is_action_pressed("open_crafting_menu"):
 		EventSystem.BUL_create_bulletin.emit(BulletinConfig.Keys.CraftingMenu, null)
 	elif event.is_action_pressed("item_hot_key"):

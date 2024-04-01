@@ -6,7 +6,7 @@ func _on_start_button_pressed() -> void:
 
 
 func _on_settings_button_pressed() -> void:
-	pass # Replace with function body.
+	EventSystem.BUL_create_bulletin.emit(BulletinConfig.Keys.SettingsMenu, false)
 
 
 func _on_credits_button_pressed() -> void:

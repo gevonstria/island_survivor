@@ -43,3 +43,9 @@ signal STA_change_stage
 
 signal HUD_hide_hud
 signal HUD_show_hud
+
+signal SET_music_volume_changed
+signal SET_sfx_volume_changed
+signal SET_res_scale_changed
+signal SET_ssaa_changed
+signal SET_fullscreen_changed

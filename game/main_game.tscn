@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ppn1n247flea"]
+[gd_scene load_steps=9 format=3 uid="uid://ppn1n247flea"]
 
 [ext_resource type="Script" path="res://game/managers/stage_controller.gd" id="1_x6yra"]
 [ext_resource type="Script" path="res://game/managers/hud_controller.gd" id="2_lmy14"]
@@ -6,9 +6,11 @@
 [ext_resource type="Script" path="res://game/managers/sfx_controller.gd" id="5_l5x43"]
 [ext_resource type="Script" path="res://game/managers/game_fade_controller.gd" id="6_vkf80"]
 [ext_resource type="PackedScene" uid="uid://vtrh0npepa4h" path="res://ui/hud/hud.tscn" id="8_0aetx"]
+[ext_resource type="Script" path="res://game/managers/settings_controller.gd" id="8_32o7o"]
 [ext_resource type="Script" path="res://game/managers/bulletin_controller.gd" id="9_hhw7g"]
 
 [node name="MainGame" type="Node"]
+process_mode = 3
 
 [node name="StageController" type="Node" parent="."]
 script = ExtResource("1_x6yra")
@@ -56,3 +58,6 @@ grow_vertical = 0
 text = "Loading..."
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="SettingsController" type="Node" parent="."]
+script = ExtResource("8_32o7o")
