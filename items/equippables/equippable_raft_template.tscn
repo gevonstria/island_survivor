@@ -91,5 +91,12 @@ libraries = {
 [node name="Raft" parent="MeshHolder" index="0" instance=ExtResource("3_ph6l7")]
 transform = Transform3D(-0.0573575, 0, 0.0819153, 0, 0.1, 0, -0.0819153, 0, -0.0573575, 0.3, -0.25, -0.35)
 
+[node name="ItemPlaceRay" parent="." index="2"]
+target_position = Vector3(0, 0, -8)
+collision_mask = 129
+
+[node name="ConstructableArea" parent="." index="3"]
+collision_mask = 127
+
 [connection signal="area_entered" from="ConstructableArea" to="." method="_on_constructable_area_body_entered"]
 [connection signal="area_exited" from="ConstructableArea" to="." method="_on_constructable_area_body_exited"]

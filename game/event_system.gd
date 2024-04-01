@@ -29,6 +29,7 @@ signal EQU_active_hotbar_slot_updated
 signal EQU_delete_equip_item
 
 signal SPA_spawn_scene
+signal SPA_spawn_vfx
 
 signal SFX_play_sfx
 signal SFX_play_dynamic_sfx
@@ -38,6 +39,7 @@ signal MUS_play_music
 signal GAM_fast_forward_day_night_anim
 signal GAM_game_fade_in
 signal GAM_game_fade_out
+signal GAM_update_navmesh
 
 signal STA_change_stage
 

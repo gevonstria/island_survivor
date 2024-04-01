@@ -46,6 +46,8 @@ var state = States.Idle
 @export var vision_fov = 80
 @export var attack_audio_key = SFXConfig.Keys.WolfAttack
 
+
+const gravity = 2.0
 var health = max_health
 var player_in_vision_range = false
 
@@ -83,6 +85,7 @@ func idle_loop():
 		
 func wander_loop():
 	look_forward()
+	apply_gravity()
 	move_and_slide()
 	
 	if is_aggressive and can_see_player():
@@ -90,6 +93,7 @@ func wander_loop():
 	
 func flee_loop():
 	look_forward()
+	apply_gravity()
 	move_and_slide()
 	
 func chase_loop():
@@ -102,12 +106,19 @@ func chase_loop():
 	var dir = global_position.direction_to(navigation_agent_3d.get_next_path_position())
 	dir.y = 0
 	velocity = dir.normalized() * alarmed_speed
+	apply_gravity()
 	move_and_slide()
 	
 func attack_loop():
 	var dir = global_position.direction_to(player.global_position)
 	rotation.y = lerp_angle(rotation.y, atan2(dir.x, dir.z) + PI, turn_speed_weight)
-	
+
+func apply_gravity():
+	if not is_on_floor():
+		velocity.y -= gravity
+	else:
+		velocity.y = 0
+		
 func attack():
 	if player in attack_hit_area.get_overlapping_bodies():
 		EventSystem.PLA_change_health.emit(-damage)

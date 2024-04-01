@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://dsq0nere10brk"]
+[gd_scene load_steps=16 format=3 uid="uid://dsq0nere10brk"]
 
 [ext_resource type="PackedScene" uid="uid://cl12h225aqi6p" path="res://items/equippables/equippable_weapon_template.tscn" id="1_fiedp"]
 [ext_resource type="AudioStream" uid="uid://3q01cyvsnqlb" path="res://audio/sfx/torch.wav" id="3_b0xd1"]
+[ext_resource type="Script" path="res://game/flickering_light.gd" id="3_ep6ej"]
 [ext_resource type="PackedScene" uid="uid://ctaejttnixyty" path="res://meshes/torch.tscn" id="3_o7qh5"]
 
 [sub_resource type="Animation" id="Animation_yw7bq"]
@@ -145,6 +146,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.560051, 0)
 layers = 3
 light_color = Color(1, 0.796078, 0.443137, 1)
 light_size = 0.3
+script = ExtResource("3_ep6ej")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="MeshHolder/Torch" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.512475, 0)

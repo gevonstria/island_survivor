@@ -14,6 +14,10 @@ func _ready() -> void:
 func hotbar_updated(_hotbar):
 	hotbar = _hotbar
 	
+	if active_hotbar_slot != null and hotbar[active_hotbar_slot] == null:
+		EventSystem.EQU_unequip_item.emit()
+		active_hotbar_slot = null
+	
 func hotbar_pressed(hotkey):
 	var idx = hotkey-1
 	if hotbar[idx] == null:

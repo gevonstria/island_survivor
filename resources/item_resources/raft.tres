@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=3 format=3 uid="uid://dlw8cukndv4oy"]
+
+[ext_resource type="Texture2D" uid="uid://dwkxhrblqsdow" path="res://textures/item_icons/raft.png" id="1_bsj04"]
+[ext_resource type="Script" path="res://resources/item_resources/item_resource.gd" id="2_ge7mi"]
+
+[resource]
+script = ExtResource("2_ge7mi")
+item_key = 18
+display_name = "Raft"
+icon = ExtResource("1_bsj04")
+description = "Use to leave the island."
+is_equippable = true

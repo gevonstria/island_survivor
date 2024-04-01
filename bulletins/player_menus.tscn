@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://bj5sqvpo82wss"]
+[gd_scene load_steps=15 format=3 uid="uid://bj5sqvpo82wss"]
 
 [ext_resource type="Texture2D" uid="uid://bo6u53p7h48lm" path="res://textures/panelInset_beige.png" id="1_ip1nb"]
 [ext_resource type="Script" path="res://bulletins/player_menus.gd" id="1_jc7kn"]
 [ext_resource type="Texture2D" uid="uid://ce7elfqa2a45y" path="res://textures/cross.png" id="2_820qy"]
 [ext_resource type="PackedScene" uid="uid://bihchgc53k323" path="res://ui/custom_nodes/inventory_slot.tscn" id="2_dkcxg"]
 [ext_resource type="Texture2D" uid="uid://kdaxobu0yfhw" path="res://textures/panelInset_brown.png" id="3_4grpx"]
+[ext_resource type="Script" path="res://ui/custom_nodes/scrap_item_slot.gd" id="5_4ootr"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6dv5f"]
 
@@ -180,23 +181,20 @@ patch_margin_top = 92
 patch_margin_right = 48
 patch_margin_bottom = 32
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VSplitContainer/DescriptionNinePatchRect"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VSplitContainer/DescriptionNinePatchRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 11.0
+offset_right = -9.0
+offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
+theme_override_constants/separation = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VSplitContainer/DescriptionNinePatchRect/MarginContainer"]
-layout_mode = 2
-theme_override_constants/separation = 16
-
-[node name="ItemDescriptionLabel" type="Label" parent="MarginContainer/HBoxContainer/VSplitContainer/DescriptionNinePatchRect/MarginContainer/HBoxContainer"]
+[node name="ItemDescriptionLabel" type="Label" parent="MarginContainer/HBoxContainer/VSplitContainer/DescriptionNinePatchRect/HBoxContainer"]
 custom_minimum_size = Vector2(240, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -204,13 +202,28 @@ size_flags_vertical = 1
 theme_override_font_sizes/font_size = 8
 autowrap_mode = 2
 
-[node name="ItemExtraInfoLabel" type="Label" parent="MarginContainer/HBoxContainer/VSplitContainer/DescriptionNinePatchRect/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(240, 0)
+[node name="ItemExtraInfoLabel" type="Label" parent="MarginContainer/HBoxContainer/VSplitContainer/DescriptionNinePatchRect/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 theme_override_font_sizes/font_size = 8
 autowrap_mode = 2
+
+[node name="ScrapSlot" type="TextureRect" parent="MarginContainer/HBoxContainer/VSplitContainer/DescriptionNinePatchRect/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_vertical = 8
+texture = ExtResource("3_4grpx")
+expand_mode = 1
+script = ExtResource("5_4ootr")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/VSplitContainer/DescriptionNinePatchRect/HBoxContainer/ScrapSlot"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 31.0
+texture = ExtResource("2_820qy")
+expand_mode = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2

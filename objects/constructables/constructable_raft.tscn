@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://y3qocepj3x8a"]
+[gd_scene load_steps=7 format=3 uid="uid://y3qocepj3x8a"]
 
 [ext_resource type="PackedScene" uid="uid://d3kba8pgxmfwb" path="res://objects/constructables/constructable_template.tscn" id="1_pd5vc"]
 [ext_resource type="PackedScene" uid="uid://eiqtplru25fh" path="res://meshes/raft.tscn" id="2_txiu0"]
+[ext_resource type="Script" path="res://items/interactables/interactable_raft.gd" id="3_q5ial"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_csukw"]
 size = Vector3(1.02155, 0.350739, 0.592896)
@@ -9,7 +10,11 @@ size = Vector3(1.02155, 0.350739, 0.592896)
 [sub_resource type="BoxShape3D" id="BoxShape3D_0t8wg"]
 size = Vector3(2.51428, 0.185425, 4.98724)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_su2fk"]
+size = Vector3(3.56299, 3.36316, 4.87061)
+
 [node name="ConstructableRaft" instance=ExtResource("1_pd5vc")]
+collision_mask = 128
 
 [node name="Raft" parent="." index="0" instance=ExtResource("2_txiu0")]
 
@@ -20,3 +25,14 @@ shape = SubResource("BoxShape3D_csukw")
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000549316, -0.0185488, 0.0210876)
 shape = SubResource("BoxShape3D_0t8wg")
+
+[node name="InteractableRaft" type="Area3D" parent="." index="3"]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+script = ExtResource("3_q5ial")
+prompt = "Escape the island!"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableRaft" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0910645, 1.18158, -0.0476074)
+shape = SubResource("BoxShape3D_su2fk")

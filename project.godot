@@ -94,3 +94,4 @@ use_item={
 3d_physics/layer_5="big_rigid_pickable"
 3d_physics/layer_6="small_rigid_pickable"
 3d_physics/layer_7="static_body"
+3d_physics/layer_8="water"
