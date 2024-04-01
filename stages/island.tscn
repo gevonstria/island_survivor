@@ -294,6 +294,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.2547, 0, 0.636575)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.2547, 0, 0)
 
 [node name="Water" parent="." instance=ExtResource("9_4kpmi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.705586, -4.28508, -1.4425)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Water"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.623901, 0)
@@ -312,7 +313,7 @@ shadow_enabled = true
 environment = SubResource("Environment_f1l5a")
 
 [node name="Player" parent="." instance=ExtResource("4_3rcg3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.3627, 0.935385, 6.00402)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.71838, 0.935385, 78.6051)
 
 [node name="Spawner" type="Node3D" parent="." node_paths=PackedStringArray("constructable_holder")]
 script = ExtResource("12_v0cnn")
