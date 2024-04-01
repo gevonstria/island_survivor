@@ -17,7 +17,8 @@ func spawn_scene(scene, tform, is_constructable=false):
 		constructable_holder.add_child(obj)
 		EventSystem.GAM_update_navmesh.emit()
 	else:
-		items.add_child(obj)
+		if not obj in items.get_children():
+			items.add_child(obj)
 		
 func spawn_vfx(scene, tform):
 	var vfx= scene.instantiate()
