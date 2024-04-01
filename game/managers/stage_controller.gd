@@ -32,7 +32,6 @@ func load_stage(key):
 	var new_stage = StageConfig.get_stage(key)
 	call_deferred_thread_group("add_child", new_stage)
 	new_stage.loading_complete.connect(loading_complete)
-	new_stage.loading_complete.emit()
 	call_deferred_thread_group("join_thread")
 	
 func join_thread() -> void:

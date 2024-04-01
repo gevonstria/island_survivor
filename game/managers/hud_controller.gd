@@ -10,6 +10,9 @@ func _ready() -> void:
 	hide_hud()
 
 func hide_hud():
+	if not hud in get_children():
+		return
+		
 	remove_child(hud)
 	
 func show_hud():
