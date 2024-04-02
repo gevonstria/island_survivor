@@ -10,7 +10,7 @@ Survive on an island battling nature and hunger. Craft Items to survive. Gather 
 
 ## Demo
 
-Itch.io link: link_here
+Itch.io link: ![Itch.io](https://gevonstria.itch.io/isla)
 
 ![MainMenu Screenshot](https://raw.githubusercontent.com/gevonstria/island_survivor/master/screenshots/main_menu.PNG)
 ![InGame001 Screenshot](https://raw.githubusercontent.com/gevonstria/island_survivor/master/screenshots/game_001.PNG)
