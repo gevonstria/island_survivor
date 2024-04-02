@@ -25,15 +25,15 @@ enum Keys {
 }
 
 const CRAFTABLE_ITEM_KEYS = [
+	Keys.Rope,
 	Keys.Axe,
 	Keys.PickAxe,
+	Keys.TinderBox,
 	Keys.Campfire,
-	#Keys.MultiTool,
-	Keys.Rope,
-	#Keys.TinderBox,
-	#Keys.Torch,
-	#Keys.Tent,
-	#Keys.Raft
+	Keys.Torch,
+	Keys.MultiTool,
+	Keys.Tent,
+	Keys.Raft
 ]
 
 const ITEM_RESOURCE_PATHS = {
@@ -43,14 +43,18 @@ const ITEM_RESOURCE_PATHS = {
 	Keys.Axe: "res://resources/item_resources/axe.tres",
 	Keys.PickAxe: "res://resources/item_resources/pickaxe.tres",
 	Keys.Rope: "res://resources/item_resources/rope.tres",
+	Keys.MultiTool: "res://resources/item_resources/multi_tool.tres",
+	Keys.TinderBox: "res://resources/item_resources/tinder_box.tres",
 	Keys.Log: "res://resources/item_resources/log_item_resource.tres",
 	Keys.Mushroom: "res://resources/item_resources/mushroom.tres",
+	Keys.Fruit: "res://resources/item_resources/fruit.tres",
 	Keys.Coal: "res://resources/item_resources/coal_item_resource.tres",
 	Keys.FlintStone: "res://resources/item_resources/flint_stone_resource.tres",
 	Keys.RawMeat: "res://resources/item_resources/raw_meat_item_resource.tres",
 	Keys.Tent: "res://resources/item_resources/tent_resource.tres",
 	Keys.Campfire: "res://resources/item_resources/campfire_resource.tres",
 	Keys.CookedMeat: "res://resources/item_resources/cooked_meat.tres",
+	Keys.Torch: "res://resources/item_resources/torch.tres",
 	Keys.Raft: "res://resources/item_resources/raft.tres"
 }
 
@@ -61,7 +65,12 @@ const CraftingBlueprintResource_PATHS = {
 	Keys.Axe: "res://resources/crafting_blueprint_resources/axe_blueprint.tres",
 	Keys.Rope: "res://resources/crafting_blueprint_resources/rope_blueprint.tres",
 	Keys.PickAxe: "res://resources/crafting_blueprint_resources/pickaxe_blueprint.tres",
-	Keys.Campfire: "res://resources/crafting_blueprint_resources/campfire.tres"
+	Keys.Campfire: "res://resources/crafting_blueprint_resources/campfire.tres",
+	Keys.Torch: "res://resources/crafting_blueprint_resources/torch.tres",
+	Keys.MultiTool: "res://resources/crafting_blueprint_resources/multi_tool.tres",
+	Keys.TinderBox: "res://resources/crafting_blueprint_resources/tinder_box.tres",
+	Keys.Tent: "res://resources/crafting_blueprint_resources/tent.tres",
+	Keys.Raft: "res://resources/crafting_blueprint_resources/raft.tres"
 }
 
 static func get_crafting_blueprint_resource(key):
@@ -71,8 +80,10 @@ const EQUIPPABLE_ITEM_PATHS = {
 	Keys.Axe: "res://items/equippables/equippable_axe_template.tscn",
 	Keys.PickAxe: "res://items/equippables/equippable_pickaxe_template.tscn",
 	Keys.Mushroom: "res://items/equippables/equippable_mushroom_template.tscn",
+	Keys.Fruit: "res://items/equippables/equippable_fruit.tscn",
 	Keys.Tent: "res://items/equippables/equippable_tent_template.tscn",
 	Keys.Campfire: "res://items/equippables/equippable_campfire_template.tscn",
+	Keys.Torch: "res://items/equippables/equippable_torch_template.tscn",
 	Keys.CookedMeat: "res://items/equippables/equippable_cooked_meat_template.tscn",
 	Keys.Raft: "res://items/equippables/equippable_raft_template.tscn"
 	

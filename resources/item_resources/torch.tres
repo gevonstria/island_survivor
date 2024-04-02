@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="WeaponItemResource" load_steps=3 format=3 uid="uid://dw3db1qc1wb8d"]
+
+[ext_resource type="Texture2D" uid="uid://cpc4m0ieh12nd" path="res://textures/item_icons/torch.png" id="1_l7t4y"]
+[ext_resource type="Script" path="res://resources/item_resources/weapon_item_resource.gd" id="2_ccams"]
+
+[resource]
+script = ExtResource("2_ccams")
+damage = 20.0
+attack_range = 1.5
+energy_change_per_use = -0.5
+item_key = 16
+display_name = "Torch"
+icon = ExtResource("1_l7t4y")
+description = "Light the way."
+is_equippable = true

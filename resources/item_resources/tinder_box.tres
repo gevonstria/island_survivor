@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=3 format=3 uid="uid://shwofllwo5ge"]
+
+[ext_resource type="Texture2D" uid="uid://bssrwktp6ma7s" path="res://textures/item_icons/tinderbox.png" id="1_1co2u"]
+[ext_resource type="Script" path="res://resources/item_resources/item_resource.gd" id="2_sbqvk"]
+
+[resource]
+script = ExtResource("2_sbqvk")
+item_key = 15
+display_name = "Tinder Box"
+icon = ExtResource("1_1co2u")
+description = "A crude lighter made up of stones."
+is_equippable = false

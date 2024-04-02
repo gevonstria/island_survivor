@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="CraftingBlueprintResource" load_steps=5 format=3 uid="uid://vhefn8lcoyvo"]
+
+[ext_resource type="Script" path="res://resources/crafting_blueprint_resources/bluepint_cost_data.gd" id="1_dak8v"]
+[ext_resource type="Script" path="res://resources/crafting_blueprint_resources/crafting_blueprint_resource.gd" id="2_lhvnt"]
+
+[sub_resource type="Resource" id="Resource_uxm1j"]
+script = ExtResource("1_dak8v")
+item_key = 0
+amount = 5
+
+[sub_resource type="Resource" id="Resource_umprm"]
+script = ExtResource("1_dak8v")
+item_key = 2
+amount = 10
+
+[resource]
+script = ExtResource("2_lhvnt")
+item_key = 17
+cost = Array[ExtResource("1_dak8v")]([SubResource("Resource_uxm1j"), SubResource("Resource_umprm")])
+needs_multitool = true
+needs_tinderbox = false

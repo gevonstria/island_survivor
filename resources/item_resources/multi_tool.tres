@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=3 format=3 uid="uid://cqlts63y1m7ec"]
+
+[ext_resource type="Texture2D" uid="uid://dwoav71i8aq8n" path="res://textures/item_icons/multitool.png" id="1_ur4r8"]
+[ext_resource type="Script" path="res://resources/item_resources/item_resource.gd" id="2_ua2qu"]
+
+[resource]
+script = ExtResource("2_ua2qu")
+item_key = 13
+display_name = "Multi Tool Box"
+icon = ExtResource("1_ur4r8")
+description = "A collection of crude items use to craft complicated materials."
+is_equippable = false
