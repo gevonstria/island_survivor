@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://b0sdulh782g8o"]
+[gd_scene load_steps=36 format=3 uid="uid://b0sdulh782g8o"]
 
 [ext_resource type="Script" path="res://stages/main_menu.gd" id="1_bvml3"]
 [ext_resource type="PackedScene" uid="uid://cqv1te5gsmcqu" path="res://meshes/terrain.tscn" id="1_dp0cw"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://crqk84v2qqcy0" path="res://meshes/pickaxe.tscn" id="12_o47yy"]
 [ext_resource type="PackedScene" uid="uid://brp26l0whpuxd" path="res://meshes/log.tscn" id="13_lkuxi"]
 [ext_resource type="PackedScene" uid="uid://c4weqtyvxai23" path="res://meshes/grass_multi.tscn" id="14_2rjx0"]
+[ext_resource type="Shader" path="res://island.gdshader" id="15_6dfj8"]
 [ext_resource type="PackedScene" uid="uid://cqo36ffues6de" path="res://meshes/tree.tscn" id="16_qex7b"]
 [ext_resource type="PackedScene" uid="uid://dyy482p8hlrxs" path="res://meshes/stone.tscn" id="17_k6bbv"]
 [ext_resource type="PackedScene" uid="uid://byilx5u8nm1jg" path="res://meshes/mushroom.tscn" id="18_w6idx"]
@@ -88,6 +89,26 @@ particles_anim_loop = false
 material = SubResource("StandardMaterial3D_kudrj")
 size = Vector2(0.1, 0.1)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e3c32"]
+render_priority = 0
+shader = ExtResource("15_6dfj8")
+shader_parameter/outlineColor = Color(0, 0, 0, 0.78)
+shader_parameter/depth_threshold = 0.2
+shader_parameter/normal_threshold = 0.2
+shader_parameter/normal_smoothing = 0.25
+shader_parameter/max_thickness = 1.3
+shader_parameter/min_thickness = 0.5
+shader_parameter/max_distance = 75.0
+shader_parameter/min_distance = 2.0
+shader_parameter/grazing_fresnel_power = 5.0
+shader_parameter/grazing_angle_mask_power = 1.0
+shader_parameter/grazing_angle_modulation_factor = 50.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_j601l"]
+material = SubResource("ShaderMaterial_e3c32")
+flip_faces = true
+size = Vector2(2, 2)
+
 [node name="MainMenu" type="Node"]
 script = ExtResource("1_bvml3")
 show_mouse = true
@@ -126,7 +147,7 @@ draw_pass_1 = SubResource("QuadMesh_ealk2")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.360406, 0)
 layers = 3
 light_color = Color(1, 0.611765, 0.360784, 1)
-light_energy = 0.721134
+light_energy = 1.01922
 shadow_enabled = true
 script = ExtResource("7_b7f6d")
 
@@ -157,6 +178,11 @@ transform = Transform3D(0.0151625, -0.854134, 0.519832, 0.999843, 0.0177491, 0, 
 
 [node name="GrassMultiMesh" parent="Island" instance=ExtResource("14_2rjx0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.44244, -1.0708, 10.6448)
+
+[node name="ShaderGlobal" type="MeshInstance3D" parent="Island"]
+cast_shadow = 0
+extra_cull_margin = 16384.0
+mesh = SubResource("QuadMesh_j601l")
 
 [node name="MainMenuUI" type="Control" parent="."]
 layout_mode = 3

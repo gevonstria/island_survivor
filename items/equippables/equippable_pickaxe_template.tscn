@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://b7rfk5mtp42jo"]
+[gd_scene load_steps=9 format=3 uid="uid://b7rfk5mtp42jo"]
 
 [ext_resource type="PackedScene" uid="uid://cl12h225aqi6p" path="res://items/equippables/equippable_weapon_template.tscn" id="1_a0oij"]
 [ext_resource type="PackedScene" uid="uid://crqk84v2qqcy0" path="res://meshes/pickaxe.tscn" id="2_2rucd"]
+[ext_resource type="Shader" path="res://island.gdshader" id="3_d5j2p"]
 
 [sub_resource type="Animation" id="Animation_yw7bq"]
 length = 0.001
@@ -84,6 +85,26 @@ _data = {
 "use_item": SubResource("Animation_acieh")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i1yxr"]
+render_priority = 0
+shader = ExtResource("3_d5j2p")
+shader_parameter/outlineColor = Color(0, 0, 0, 0.78)
+shader_parameter/depth_threshold = 0.2
+shader_parameter/normal_threshold = 0.2
+shader_parameter/normal_smoothing = 0.25
+shader_parameter/max_thickness = 1.3
+shader_parameter/min_thickness = 0.5
+shader_parameter/max_distance = 75.0
+shader_parameter/min_distance = 2.0
+shader_parameter/grazing_fresnel_power = 5.0
+shader_parameter/grazing_angle_mask_power = 1.0
+shader_parameter/grazing_angle_modulation_factor = 50.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_735fc"]
+material = SubResource("ShaderMaterial_i1yxr")
+flip_faces = true
+size = Vector2(2, 2)
+
 [node name="EquippablePickAxeTemplate" instance=ExtResource("1_a0oij")]
 
 [node name="AnimationPlayer" parent="." index="0"]
@@ -93,3 +114,8 @@ libraries = {
 
 [node name="Pickaxe" parent="MeshHolder" index="0" instance=ExtResource("2_2rucd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, -0.5, -0.35)
+
+[node name="ShaderGlobal" type="MeshInstance3D" parent="." index="3"]
+cast_shadow = 0
+extra_cull_margin = 16384.0
+mesh = SubResource("QuadMesh_735fc")
