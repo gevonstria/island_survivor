@@ -27,7 +27,7 @@ enum Keys {
 const CRAFTABLE_ITEM_KEYS = [
 	Keys.Axe,
 	Keys.PickAxe,
-	#Keys.Campfire,
+	Keys.Campfire,
 	#Keys.MultiTool,
 	Keys.Rope,
 	#Keys.TinderBox,
@@ -60,7 +60,8 @@ static func get_item_resource(key):
 const CraftingBlueprintResource_PATHS = {
 	Keys.Axe: "res://resources/crafting_blueprint_resources/axe_blueprint.tres",
 	Keys.Rope: "res://resources/crafting_blueprint_resources/rope_blueprint.tres",
-	Keys.PickAxe: "res://resources/crafting_blueprint_resources/pickaxe_blueprint.tres"
+	Keys.PickAxe: "res://resources/crafting_blueprint_resources/pickaxe_blueprint.tres",
+	Keys.Campfire: "res://resources/crafting_blueprint_resources/campfire.tres"
 }
 
 static func get_crafting_blueprint_resource(key):
