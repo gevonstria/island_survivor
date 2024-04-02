@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://b0sdulh782g8o"]
+[gd_scene load_steps=33 format=3 uid="uid://b0sdulh782g8o"]
 
 [ext_resource type="Script" path="res://stages/main_menu.gd" id="1_bvml3"]
 [ext_resource type="PackedScene" uid="uid://cqv1te5gsmcqu" path="res://meshes/terrain.tscn" id="1_dp0cw"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://ui/custom_nodes/ui_button.gd" id="12_crb0j"]
 [ext_resource type="PackedScene" uid="uid://crqk84v2qqcy0" path="res://meshes/pickaxe.tscn" id="12_o47yy"]
 [ext_resource type="PackedScene" uid="uid://brp26l0whpuxd" path="res://meshes/log.tscn" id="13_lkuxi"]
+[ext_resource type="PackedScene" uid="uid://c4weqtyvxai23" path="res://meshes/grass_multi.tscn" id="14_2rjx0"]
 [ext_resource type="PackedScene" uid="uid://cqo36ffues6de" path="res://meshes/tree.tscn" id="16_qex7b"]
 [ext_resource type="PackedScene" uid="uid://dyy482p8hlrxs" path="res://meshes/stone.tscn" id="17_k6bbv"]
 [ext_resource type="PackedScene" uid="uid://byilx5u8nm1jg" path="res://meshes/mushroom.tscn" id="18_w6idx"]
@@ -125,7 +126,7 @@ draw_pass_1 = SubResource("QuadMesh_ealk2")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.360406, 0)
 layers = 3
 light_color = Color(1, 0.611765, 0.360784, 1)
-light_energy = 0.964135
+light_energy = 1.07686
 shadow_enabled = true
 script = ExtResource("7_b7f6d")
 
@@ -146,13 +147,16 @@ transform = Transform3D(-0.90807, 0, 0.418818, 0, 1, 0, -0.418818, 0, -0.90807, 
 script = ExtResource("8_l18mq")
 
 [node name="Axe" parent="Island" instance=ExtResource("11_11xux")]
-transform = Transform3D(0.0131245, -0.176966, 0.984129, 0.993995, 0.109235, 0.00638664, -0.108632, 0.978136, 0.177337, -7.5069, 0.0123039, 7.86342)
+transform = Transform3D(0.829357, -0.36067, 0.426714, 0.379461, 0.924179, 0.0436231, -0.410093, 0.125742, 0.903334, -9.94506, 0.0123039, 7.76602)
 
 [node name="Pickaxe" parent="Island" instance=ExtResource("12_o47yy")]
-transform = Transform3D(0.165419, -0.583716, 0.794929, 0.984809, 0.140924, -0.101451, -0.0528065, 0.799635, 0.59816, -7.0972, 0, 7.88041)
+transform = Transform3D(0.937091, -0.305699, 0.168553, 0.348567, 0.845733, -0.404026, -0.0190408, 0.43736, 0.899085, -10.0766, 0.0361899, 7.38582)
 
 [node name="Log" parent="Island" instance=ExtResource("13_lkuxi")]
 transform = Transform3D(0.0151625, -0.854134, 0.519832, 0.999843, 0.0177491, 0, -0.00922653, 0.51975, 0.854268, -6.44611, 0.173337, 9.66161)
+
+[node name="GrassMultiMesh" parent="Island" instance=ExtResource("14_2rjx0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.44244, -1.0708, 10.6448)
 
 [node name="MainMenuUI" type="Control" parent="."]
 layout_mode = 3
