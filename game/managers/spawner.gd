@@ -11,7 +11,7 @@ func _enter_tree() -> void:
 func spawn_scene(scene, tform, is_constructable=false):
 	var obj = scene.instantiate()
 	obj.global_transform = tform
-	items.add_child(obj)
+	#items.add_child(obj)
 	
 	if is_constructable:
 		constructable_holder.add_child(obj)

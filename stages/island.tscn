@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dmgusaxuyelpn"]
+[gd_scene load_steps=26 format=3 uid="uid://dmgusaxuyelpn"]
 
 [ext_resource type="PackedScene" uid="uid://cqv1te5gsmcqu" path="res://meshes/terrain.tscn" id="1_jkgg7"]
 [ext_resource type="Script" path="res://stages/island.gd" id="1_owl2e"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://mc8h3pijsipt" path="res://objects/hittable_objects/hittable_flintstone_boulder.tscn" id="10_g68v6"]
 [ext_resource type="Script" path="res://game/managers/spawner.gd" id="12_v0cnn"]
 [ext_resource type="Script" path="res://game/managers/day_night_cycle_anim_player.gd" id="14_latnc"]
+[ext_resource type="PackedScene" uid="uid://cmd5m8gr1tb6k" path="res://meshes/Ship_Small.gltf" id="17_3j4vf"]
 [ext_resource type="PackedScene" uid="uid://c4weqtyvxai23" path="res://meshes/grass_multi.tscn" id="17_jdcxj"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_bwprj"]
@@ -368,3 +369,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.82269, -1.08375, -32.6464)
 
 [node name="GrassMultiMesh6" parent="Grass" instance=ExtResource("17_jdcxj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.82269, -1.08375, -47.6464)
+
+[node name="Extras" type="Node3D" parent="."]
+transform = Transform3D(0.669675, -0.728255, -0.145533, 0, -0.195963, 0.980611, -0.742654, -0.656691, -0.131232, 14.4426, -3.66118, 113.717)
+
+[node name="Ship_Small2" parent="Extras" instance=ExtResource("17_3j4vf")]
+transform = Transform3D(1, 0, 0, -2.98023e-08, 1, -7.45058e-09, -7.45058e-09, 1.49012e-08, 1, 0, 0, 0)

@@ -126,7 +126,7 @@ draw_pass_1 = SubResource("QuadMesh_ealk2")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.360406, 0)
 layers = 3
 light_color = Color(1, 0.611765, 0.360784, 1)
-light_energy = 1.07686
+light_energy = 0.721134
 shadow_enabled = true
 script = ExtResource("7_b7f6d")
 
