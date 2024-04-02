@@ -42,7 +42,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_3p4aj")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_osou0"]
-size = Vector3(1, 0.620483, 0.702393)
+size = Vector3(2.66821, 1.73172, 2.08411)
 
 [node name="RockEnvironment" type="StaticBody3D"]
 collision_layer = 64
@@ -52,6 +52,16 @@ collision_mask = 0
 mesh = SubResource("ArrayMesh_tu3mp")
 skeleton = NodePath("")
 
+[node name="Environment_Rock_2" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.212771, -0.864195)
+mesh = SubResource("ArrayMesh_tu3mp")
+skeleton = NodePath("")
+
+[node name="Environment_Rock_3" type="MeshInstance3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0.878149, 0.444538, -0.743829)
+mesh = SubResource("ArrayMesh_tu3mp")
+skeleton = NodePath("")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0597534, -0.00280762)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.615845, 0.615372, -0.693665)
 shape = SubResource("BoxShape3D_osou0")
