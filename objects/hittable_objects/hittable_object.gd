@@ -10,7 +10,8 @@ var current_health : float
 func _ready() -> void:
 	current_health = attributes.max_health
 	if residue_static_body != null:
-		remove_child(residue_static_body)
+		#remove_child(residue_static_body)
+		residue_static_body.hide()
 	
 func register_hit(weapon_item_resource):
 	if not attributes.weapon_filter.is_empty() and not weapon_item_resource.item_key in attributes.weapon_filter:
@@ -30,6 +31,9 @@ func die():
 		return
 		
 	for child in get_children():
-		child.queue_free()
+		if child == residue_static_body:
+			residue_static_body.show()
+		else:
+			child.queue_free()
 		
-	add_child(residue_static_body)
+	
